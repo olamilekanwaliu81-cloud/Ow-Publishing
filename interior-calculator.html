@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interior Layout Calculator — Margins, Gutter &amp; Bleed | OW Publishing House</title>
+  <meta name="description" content="Free interior layout calculator: get the correct margins, gutter (it scales with page count) and bleed for your book's inside pages — modelled on Amazon KDP. So text never gets swallowed into the spine or trimmed off.">
+  <link rel="icon" href="assets/ow-logo-monogram.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=28">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="nav" id="nav">
+        <a class="brand" href="index.html" aria-label="OW Publishing House home">
+          <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram">
+          <span class="brand-name">OW Publishing House</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="self-publishing.html">Self-Publishing</a></li>
+          <li><a href="agent-route.html">The Agent Route</a></li>
+          <li><a href="local-print.html">Local Print</a></li>
+          <li><a href="published-books.html">Published Books</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="nav-cta-mobile"><a href="https://book.olamilekanwaliu.com">Book a Consultation →</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn-gold" href="https://book.olamilekanwaliu.com">Book a Consultation</a>
+          <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="lane-hero">
+      <div class="wrap gallery-header">
+        <p class="crumbs"><a href="index.html">Home</a><span class="sep">›</span><a href="self-publishing.html#toolkit">Author Toolkit</a><span class="sep">›</span>Interior Calculator</p>
+        <p class="eyebrow">Author Toolkit · Free tool</p>
+        <h1>Interior Layout Calculator</h1>
+        <p class="lead">Get the correct margins, gutter and bleed for the inside of your book — so text never gets swallowed into the spine or trimmed off the edge.</p>
+      </div>
+    </section>
+
+    <section class="section platforms">
+      <div class="wrap">
+        <div id="interiorCalc" class="calc">
+
+          <!-- INPUTS -->
+          <div class="calc-inputs">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+              <h3>Your interior</h3>
+              <div class="unit-toggle" role="group" aria-label="Units">
+                <button type="button" data-unit="in" class="active">Inches</button>
+                <button type="button" data-unit="mm">mm</button>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="inTrim">Trim size</label>
+                <select id="inTrim"></select>
+              </div>
+              <div class="field">
+                <label for="inPages">Page count</label>
+                <input id="inPages" type="number" min="1" inputmode="numeric" placeholder="e.g. 240" value="240">
+              </div>
+              <div class="field" id="inCustom" style="display:none;">
+                <label for="inW">Custom width (in)</label>
+                <input id="inW" type="number" min="1" step="0.01" placeholder="6">
+              </div>
+              <div class="field" id="inCustomH" style="display:none;">
+                <label for="inH">Custom height (in)</label>
+                <input id="inH" type="number" min="1" step="0.01" placeholder="9">
+              </div>
+              <div class="field full">
+                <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:500;">
+                  <input id="inBleed" type="checkbox" style="width:auto;">
+                  My interior has images or colour running to the edge (full-bleed)
+                </label>
+                <span class="hint">Leave unchecked for a text-only interior — it usually needs no bleed.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULTS -->
+          <div class="calc-results">
+            <p class="eyebrow">Set your document up like this</p>
+            <h3 style="margin-bottom:8px;">Your interior spec</h3>
+            <div class="result-row"><span class="rl">Page size</span><span class="rv" id="inPageSize">—</span></div>
+            <div class="result-row"><span class="rl">Inside margin (gutter) <small>scales with page count</small></span><span class="rv" id="inGutter">—</span></div>
+            <div class="result-row"><span class="rl">Outside / top / bottom</span><span class="rv" id="inMargins">—</span></div>
+            <div class="result-row"><span class="rl">Bleed</span><span class="rv" id="inBleedOut">None</span></div>
+            <p class="calc-summary" id="inSummary">Enter your trim size and page count to see your interior setup.</p>
+            <p class="calc-flag" id="inFlag"></p>
+          </div>
+        </div>
+
+        <div class="guardrail">
+          <span aria-hidden="true">🛈</span>
+          <span><b>Which spec is this?</b> These recommendations use the <b>Amazon KDP</b> model — the anchor platform. Minimum margin and gutter rules differ slightly on IngramSpark and other printers, and they grow with page count. OW always checks and adjusts final files before upload.</span>
+        </div>
+
+        <!-- SEND TO OW -->
+        <div class="send-specs" style="max-width:760px;">
+          <div class="section-head" style="margin-bottom:18px;">
+            <p class="eyebrow">Optional</p>
+            <h2>Send these specs to OW</h2>
+            <p class="lead">Want us to format your interior to this spec? Send your setup and we'll take it from here.</p>
+          </div>
+          <form class="form-card" id="interiorSend" data-ow-form data-success="#interiorSuccess"
+                action="https://formspree.io/f/mlgqyada" method="POST">
+            <input type="hidden" name="_subject" value="Interior Calculator — specs from an author">
+            <input type="hidden" name="Calculated interior spec" id="inHidden">
+
+            <div class="spec-recap" aria-live="polite">
+              <p class="recap-title">Your calculated specs — sent with this form</p>
+              <ul>
+                <li><span>Page size</span><b id="rcInSize">—</b></li>
+                <li><span>Page count</span><b id="rcInPages">—</b></li>
+                <li><span>Inside (gutter)</span><b id="rcInGutter">—</b></li>
+                <li><span>Outside / top / bottom</span><b id="rcInMargins">—</b></li>
+                <li><span>Bleed</span><b id="rcInBleed">—</b></li>
+                <li><span>Interior type</span><b id="rcInType">—</b></li>
+              </ul>
+            </div>
+
+            <div class="form-grid">
+              <div class="field"><label for="inName">Name <span class="req">*</span></label><input id="inName" name="Name" type="text" required></div>
+              <div class="field"><label for="inEmail">Email <span class="req">*</span></label><input id="inEmail" name="Email" type="email" required></div>
+              <div class="field"><label for="inWhats">WhatsApp <span class="req">*</span></label><input id="inWhats" name="WhatsApp" type="tel" placeholder="+234 …" required></div>
+              <div class="field"><label for="inTitle">Book title</label><input id="inTitle" name="Book title" type="text"></div>
+              <div class="field"><label for="inSoftware">Software you'll use</label>
+                <select id="inSoftware" name="Software"><option value="" disabled selected>Optional…</option><option>Microsoft Word</option><option>Google Docs</option><option>Adobe InDesign</option><option>Affinity Publisher</option><option>Not sure — advise me</option></select>
+              </div>
+              <div class="field"><label for="inDeadline">When do you need it?</label><input id="inDeadline" name="Deadline" type="text" placeholder="e.g. within 3 weeks"></div>
+              <div class="field full"><label for="inNotes">Notes for formatting</label>
+                <textarea id="inNotes" name="Notes" placeholder="Chapters, images, special pages (dedication, contents), fonts you like, anything unusual about the layout…"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-gold btn-lg" type="submit">Send my interior specs <span class="arrow">→</span></button>
+              <p class="form-privacy">We use your details only to prepare your formatting quote.</p>
+            </div>
+          </form>
+          <div class="form-success" id="interiorSuccess" role="status" aria-live="polite">
+            <div class="tick" aria-hidden="true">✓</div>
+            <h3>Got it — your interior specs are in</h3>
+            <p>We'll be in touch about formatting your interior. Prefer to chat? <a href="https://wa.me/2349042534953" style="color:var(--gold-deep);font-weight:600;">WhatsApp us</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-band">
+      <div class="wrap">
+        <p class="eyebrow" style="color:var(--gold-soft)">The companion tool</p>
+        <h2>Need your cover size too?</h2>
+        <p>The Cover Template Calculator gives you the exact spine width and full-wrap canvas for your cover.</p>
+        <div class="cta-actions">
+          <a class="btn btn-gold btn-lg" href="cover-calculator.html">Open the Cover Calculator <span class="arrow">→</span></a>
+          <a class="btn btn-ghost btn-lg" href="self-publishing.html">Back to Self-Publishing</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <a class="brand" href="index.html">
+            <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram" style="width:44px;height:44px;border-radius:50%;">
+            <span class="brand-name">OW Publishing House</span>
+          </a>
+          <p>A hybrid publishing house that produces, publishes and grows the sales of authors' books — foreign and local.</p>
+          <p class="foot-nostock">We hold no stock. You keep your book, your rights, and your copies.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="self-publishing.html">Self-Publishing</a></li>
+            <li><a href="agent-route.html">The Agent Route</a></li>
+            <li><a href="local-print.html">Local Print</a></li>
+            <li><a href="published-books.html">Published Books</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Connect</h4>
+          <ul data-placeholder="contact">
+            <li><a href="mailto:hello@owpublishing.example">hello@owpublishing.example</a></li>
+            <li><a href="https://wa.me/2349042534953">WhatsApp · 0904 253 4953</a></li>
+            <li><a href="tel:+2348106004342">Call · 0810 600 4342</a></li>
+            <li><a href="https://book.olamilekanwaliu.com">Book a Consultation</a></li>
+            <li><a href="https://www.linkedin.com/company/olamilekanwaliu/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.upwork.com/agencies/2075718404629570653/" target="_blank" rel="noopener">Upwork profile</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-trust" data-placeholder="trust-row"><span class="badge">★</span><span>5+ years · KDP &amp; IngramSpark certified workflow · Authors served across [regions]</span></div>
+      <div class="foot-bottom">
+        <span>© <span id="year"></span> OW Publishing House. All rights reserved.</span>
+        <span><a href="terms.html">Terms</a> · <a href="rights.html">Author Rights &amp; Ownership Statement</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+  <script src="js/toolkit.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Template Calculator — Spine &amp; Full-Wrap Size | OW Publishing House</title>
+  <meta name="description" content="Free cover template calculator: get your exact spine width and full-wrap cover canvas size from binding, paper and page count — modelled on Amazon KDP. So your cover never gets rejected at upload.">
+  <link rel="icon" href="assets/ow-logo-monogram.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=28">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="nav" id="nav">
+        <a class="brand" href="index.html" aria-label="OW Publishing House home">
+          <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram">
+          <span class="brand-name">OW Publishing House</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="self-publishing.html">Self-Publishing</a></li>
+          <li><a href="agent-route.html">The Agent Route</a></li>
+          <li><a href="local-print.html">Local Print</a></li>
+          <li><a href="published-books.html">Published Books</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="nav-cta-mobile"><a href="https://book.olamilekanwaliu.com">Book a Consultation →</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn-gold" href="https://book.olamilekanwaliu.com">Book a Consultation</a>
+          <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="lane-hero">
+      <div class="wrap gallery-header">
+        <p class="crumbs"><a href="index.html">Home</a><span class="sep">›</span><a href="self-publishing.html#toolkit">Author Toolkit</a><span class="sep">›</span>Cover Calculator</p>
+        <p class="eyebrow">Author Toolkit · Free tool</p>
+        <h1>Cover Template Calculator</h1>
+        <p class="lead">Get your exact spine width and full-wrap cover canvas — so your cover is sized right the first time and never gets rejected at upload.</p>
+      </div>
+    </section>
+
+    <section class="section platforms">
+      <div class="wrap">
+        <div id="coverCalc" class="calc">
+
+          <!-- INPUTS -->
+          <div class="calc-inputs">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+              <h3>Your book</h3>
+              <div class="unit-toggle" role="group" aria-label="Units">
+                <button type="button" data-unit="in" class="active">Inches</button>
+                <button type="button" data-unit="mm">mm</button>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="cvBinding">Binding</label>
+                <select id="cvBinding"><option value="paperback">Paperback</option><option value="hardcover">Hardcover</option></select>
+              </div>
+              <div class="field">
+                <label for="cvCoverType">Cover type</label>
+                <select id="cvCoverType"><option value="standard">Standard (paperback)</option><option value="casewrap">Case wrap (hardcover)</option><option value="dustjacket">Dust jacket (hardcover)</option></select>
+              </div>
+              <div class="field">
+                <label for="cvInterior">Interior</label>
+                <select id="cvInterior"><option value="bw">Black &amp; white</option><option value="standard">Standard colour</option><option value="premium">Premium colour</option></select>
+              </div>
+              <div class="field">
+                <label for="cvPaper">Paper</label>
+                <select id="cvPaper"><option value="white">White</option><option value="cream">Cream</option><option value="groundwood">Groundwood</option></select>
+              </div>
+              <div class="field">
+                <label for="cvTrim">Trim size</label>
+                <select id="cvTrim"></select>
+              </div>
+              <div class="field">
+                <label for="cvPages">Page count</label>
+                <input id="cvPages" type="number" min="1" inputmode="numeric" placeholder="e.g. 240" value="240">
+              </div>
+              <div class="field" id="cvCustom" style="display:none;">
+                <label for="cvW">Custom width (in)</label>
+                <input id="cvW" type="number" min="1" step="0.01" placeholder="6">
+              </div>
+              <div class="field" id="cvCustomH" style="display:none;">
+                <label for="cvH">Custom height (in)</label>
+                <input id="cvH" type="number" min="1" step="0.01" placeholder="9">
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULTS -->
+          <div class="calc-results">
+            <p class="eyebrow">Your cover canvas</p>
+            <h3 style="margin-bottom:8px;">Design at these sizes</h3>
+            <div class="result-row"><span class="rl">Spine width</span><span class="rv" id="cvSpine">—</span></div>
+            <div class="result-row"><span class="rl">Full cover width <small>back + spine + front + bleed</small></span><span class="rv" id="cvFullW">—</span></div>
+            <div class="result-row"><span class="rl">Full cover height <small>trim + top/bottom bleed</small></span><span class="rv" id="cvFullH">—</span></div>
+            <p class="calc-summary" id="cvSummary">Enter your trim size and page count to see your exact canvas size.</p>
+            <p class="calc-flag" id="cvFlag"></p>
+          </div>
+        </div>
+
+        <div class="guardrail">
+          <span aria-hidden="true">🛈</span>
+          <span><b>Which spec is this?</b> These figures use the <b>Amazon KDP</b> model — the anchor platform. Paper-thickness and bleed values differ slightly on IngramSpark and other printers, and hardcover case-wrap / dust-jacket covers need extra wrap allowance. OW always checks and adjusts final files before upload.</span>
+        </div>
+
+        <!-- SEND TO OW -->
+        <div class="send-specs" style="max-width:760px;">
+          <div class="section-head" style="margin-bottom:18px;">
+            <p class="eyebrow">Optional</p>
+            <h2>Send these specs to OW</h2>
+            <p class="lead">Want us to design the cover to this exact size? Send your dimensions and we'll take it from here.</p>
+          </div>
+          <form class="form-card" id="coverSend" data-ow-form data-success="#coverSuccess"
+                action="https://formspree.io/f/mlgqyada" method="POST">
+            <input type="hidden" name="_subject" value="Cover Calculator — specs from an author">
+            <input type="hidden" name="Calculated cover spec" id="cvHidden">
+
+            <div class="spec-recap" aria-live="polite">
+              <p class="recap-title">Your calculated specs — sent with this form</p>
+              <ul>
+                <li><span>Trim size</span><b id="rcTrim">—</b></li>
+                <li><span>Page count</span><b id="rcPages">—</b></li>
+                <li><span>Binding</span><b id="rcBinding">—</b></li>
+                <li><span>Interior · paper</span><b id="rcPaper">—</b></li>
+                <li><span>Spine width</span><b id="rcSpine">—</b></li>
+                <li><span>Full cover size</span><b id="rcFull">—</b></li>
+              </ul>
+            </div>
+
+            <div class="form-grid">
+              <div class="field"><label for="cvName">Name <span class="req">*</span></label><input id="cvName" name="Name" type="text" required></div>
+              <div class="field"><label for="cvEmail">Email <span class="req">*</span></label><input id="cvEmail" name="Email" type="email" required></div>
+              <div class="field"><label for="cvWhats">WhatsApp <span class="req">*</span></label><input id="cvWhats" name="WhatsApp" type="tel" placeholder="+234 …" required></div>
+              <div class="field"><label for="cvTitle">Book title</label><input id="cvTitle" name="Book title" type="text"></div>
+              <div class="field"><label for="cvFormat">Cover needed for</label>
+                <select id="cvFormat" name="Cover format"><option>Print &amp; ebook</option><option>Print only</option><option>Ebook only</option></select>
+              </div>
+              <div class="field"><label for="cvDeadline">When do you need it?</label><input id="cvDeadline" name="Deadline" type="text" placeholder="e.g. within 3 weeks"></div>
+              <div class="field full"><label for="cvNotes">Notes for the designer</label>
+                <textarea id="cvNotes" name="Notes" placeholder="Style, mood, colours, any cover you admire, title &amp; author name as they should appear, back-cover blurb…"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-gold btn-lg" type="submit">Send my cover specs <span class="arrow">→</span></button>
+              <p class="form-privacy">We use your details only to prepare your cover quote.</p>
+            </div>
+          </form>
+          <div class="form-success" id="coverSuccess" role="status" aria-live="polite">
+            <div class="tick" aria-hidden="true">✓</div>
+            <h3>Got it — your cover specs are in</h3>
+            <p>We'll be in touch about designing your cover to size. Prefer to chat? <a href="https://wa.me/2349042534953" style="color:var(--gold-deep);font-weight:600;">WhatsApp us</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-band">
+      <div class="wrap">
+        <p class="eyebrow" style="color:var(--gold-soft)">The companion tool</p>
+        <h2>Now set up your interior</h2>
+        <p>Your cover's sorted — the Interior Layout Calculator gives you the right margins, gutter and bleed for the inside of the book.</p>
+        <div class="cta-actions">
+          <a class="btn btn-gold btn-lg" href="interior-calculator.html">Open the Interior Calculator <span class="arrow">→</span></a>
+          <a class="btn btn-ghost btn-lg" href="self-publishing.html">Back to Self-Publishing</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <a class="brand" href="index.html">
+            <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram" style="width:44px;height:44px;border-radius:50%;">
+            <span class="brand-name">OW Publishing House</span>
+          </a>
+          <p>A hybrid publishing house that produces, publishes and grows the sales of authors' books — foreign and local.</p>
+          <p class="foot-nostock">We hold no stock. You keep your book, your rights, and your copies.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="self-publishing.html">Self-Publishing</a></li>
+            <li><a href="agent-route.html">The Agent Route</a></li>
+            <li><a href="local-print.html">Local Print</a></li>
+            <li><a href="published-books.html">Published Books</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Connect</h4>
+          <ul data-placeholder="contact">
+            <li><a href="mailto:hello@owpublishing.example">hello@owpublishing.example</a></li>
+            <li><a href="https://wa.me/2349042534953">WhatsApp · 0904 253 4953</a></li>
+            <li><a href="tel:+2348106004342">Call · 0810 600 4342</a></li>
+            <li><a href="https://book.olamilekanwaliu.com">Book a Consultation</a></li>
+            <li><a href="https://www.linkedin.com/company/olamilekanwaliu/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.upwork.com/agencies/2075718404629570653/" target="_blank" rel="noopener">Upwork profile</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-trust" data-placeholder="trust-row"><span class="badge">★</span><span>5+ years · KDP &amp; IngramSpark certified workflow · Authors served across [regions]</span></div>
+      <div class="foot-bottom">
+        <span>© <span id="year"></span> OW Publishing House. All rights reserved.</span>
+        <span><a href="terms.html">Terms</a> · <a href="rights.html">Author Rights &amp; Ownership Statement</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+  <script src="js/toolkit.js?v=3"></script>
+</body>
+</html>
