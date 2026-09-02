@@ -282,6 +282,28 @@ const OW_IDEA = {
     setR('rcInMargins', pg ? owRound(outside, unit) + ' ' + owUnit(unit) : '—');
     setR('rcInBleed', bleed ? owRound(bleed, unit) + ' ' + owUnit(unit) : 'None');
     setR('rcInType', fullbleed.checked ? 'Full-bleed (images to edge)' : 'Text-only');
+
+    // Compact to-scale book preview (every trim drawn at the SAME scale so shapes/sizes compare)
+    const book = el('spBook'), txt = el('spText'), cap = el('spCaption');
+    if (book && cap) {
+      if (t.w && t.h) {
+        const S = 26; // px per inch — keeps even an 8.5×11 book small & portable
+        book.style.display = 'block';
+        book.style.width = (t.w * S) + 'px';
+        book.style.height = (t.h * S) + 'px';
+        txt.style.display = 'block';
+        txt.style.top = (outside * S) + 'px';
+        txt.style.bottom = (outside * S) + 'px';
+        txt.style.left = (inside * S) + 'px';    // spine side = inside/gutter margin
+        txt.style.right = (outside * S) + 'px';
+        cap.innerHTML = t.w + ' × ' + t.h + ' in' +
+          '<small>Shown to scale — every trim at the same scale to compare' +
+          (bleed ? ' · plus ' + C.bleedIn + ' in bleed' : '') + '</small>';
+      } else {
+        book.style.display = 'none';
+        cap.textContent = 'Choose a trim size to preview it.';
+      }
+    }
   }
 
   root.addEventListener('input', calc);

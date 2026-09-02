@@ -24,6 +24,57 @@
   if (y) y.textContent = new Date().getFullYear();
 })();
 
+// Consultation booking — availability-restricted time picker
+// -------------------------------------------------------------
+// EDIT AVAILABILITY HERE. Hours in 24h; 24 = midnight. slotMinutes = gap between times.
+// weekday = Mon–Fri, weekend = Sat & Sun.
+(function () {
+  const dateEl = document.getElementById('bkDate');
+  const timeEl = document.getElementById('bkTime');
+  if (!dateEl || !timeEl || timeEl.tagName !== 'SELECT') return;
+
+  const BOOKING = {
+    slotMinutes: 30,
+    weekday: [[13, 16], [20, 24]],   // 1–4 PM and 8 PM–12 AM
+    weekend: [[0, 24]]               // Sat & Sun: any time
+  };
+
+  // Don't allow past dates.
+  const now = new Date();
+  dateEl.min = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+
+  function fmt(mins) {
+    let h = Math.floor(mins / 60), m = mins % 60, ap = h >= 12 ? 'PM' : 'AM', h12 = h % 12;
+    if (h12 === 0) h12 = 12;
+    return h12 + ':' + String(m).padStart(2, '0') + ' ' + ap;
+  }
+  function slotsFor(windows) {
+    const out = [];
+    windows.forEach(function (w) { for (let t = w[0] * 60; t < w[1] * 60; t += BOOKING.slotMinutes) out.push(t); });
+    return out;
+  }
+  function populate() {
+    if (!dateEl.value) {
+      timeEl.innerHTML = '<option value="" selected disabled>Pick a day first…</option>';
+      timeEl.disabled = true;
+      return;
+    }
+    const d = new Date(dateEl.value + 'T00:00:00');
+    const day = d.getDay(); // 0 Sun … 6 Sat
+    const isWeekend = (day === 0 || day === 6);
+    const slots = slotsFor(isWeekend ? BOOKING.weekend : BOOKING.weekday);
+    timeEl.disabled = false;
+    timeEl.innerHTML = '<option value="" selected disabled>Choose a time…</option>' +
+      slots.map(function (t) { return '<option value="' + fmt(t) + (isWeekend ? '' : '') + '">' + fmt(t) + '</option>'; }).join('');
+    const hint = document.getElementById('bkTimeHint');
+    if (hint) hint.textContent = isWeekend
+      ? 'Weekend — any time works. We’ll confirm the exact slot with you.'
+      : 'Weekday availability: 1–4 PM and 8 PM–12 AM. We’ll confirm the exact slot.';
+  }
+  dateEl.addEventListener('change', populate);
+  populate();
+})();
+
 // Resources / Blog — post listing with category tabs + pagination
 (function () {
   const app = document.getElementById('blogApp');

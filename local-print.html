@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=28">
+  <link rel="stylesheet" href="css/styles.css?v=29">
 </head>
 <body>
 
@@ -29,10 +29,10 @@
           <li><a href="published-books.html">Published Books</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="about.html">About</a></li>
-          <li class="nav-cta-mobile"><a href="https://book.olamilekanwaliu.com">Book a Consultation →</a></li>
+          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation →</a></li>
         </ul>
         <div class="nav-cta">
-          <a class="btn btn-gold" href="https://book.olamilekanwaliu.com">Book a Consultation</a>
+          <a class="btn btn-gold" href="consultation.html">Book a Consultation</a>
           <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -237,8 +237,15 @@
                 <input id="qty" name="Quantity" type="number" min="1" inputmode="numeric" placeholder="e.g. 50" required>
               </div>
               <div class="field">
-                <label for="location">Delivery location <span class="req">*</span></label>
-                <input id="location" name="Delivery location" type="text" placeholder="City / state, Nigeria" required>
+                <label for="location">Delivery state <span class="req">*</span></label>
+                <select id="location" name="Delivery location" required>
+                  <option value="" selected disabled>Select your state…</option>
+                  <option>Oyo State</option>
+                  <option>Osun State</option>
+                  <option>Kwara State</option>
+                  <option>Lagos State</option>
+                </select>
+                <span class="hint">We currently deliver within Oyo, Osun, Kwara &amp; Lagos States. Add your city/area in Notes below.</span>
               </div>
             </div>
           </div>
@@ -314,7 +321,7 @@
           </details>
           <details>
             <summary>Where do you deliver?</summary>
-            <p>Tell us your delivery location in the Spec Collector and we'll include shipping in your quote. <span data-placeholder="delivery-areas">(Owner to confirm delivery coverage / regions.)</span></p>
+            <p>We currently print and deliver within <b>Oyo, Osun, Kwara and Lagos States</b>. Tell us your exact delivery location in the Spec Collector and we'll include shipping in your quote.</p>
           </details>
           <details>
             <summary>How is pricing worked out?</summary>
@@ -365,19 +372,19 @@
         <div class="foot-col">
           <h4>Connect</h4>
           <ul data-placeholder="contact">
-            <li><a href="mailto:hello@owpublishing.example">hello@owpublishing.example</a></li>
+            <li><a href="mailto:hello@owpublishiing.com">hello@owpublishiing.com</a></li>
             <li><a href="https://wa.me/2349042534953">WhatsApp · 0904 253 4953</a></li>
             <li><a href="tel:+2348106004342">Call · 0810 600 4342</a></li>
-            <li><a href="https://book.olamilekanwaliu.com">Book a Consultation</a></li>
+            <li><a href="consultation.html">Book a Consultation</a></li>
             <li><a href="https://www.linkedin.com/company/olamilekanwaliu/" target="_blank" rel="noopener">LinkedIn</a></li>
             <li><a href="https://www.upwork.com/agencies/2075718404629570653/" target="_blank" rel="noopener">Upwork profile</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="foot-trust" data-placeholder="trust-row">
+      <div class="foot-trust">
         <span class="badge">★</span>
-        <span>5+ years · KDP &amp; IngramSpark certified workflow · Authors served across [regions]</span>
+        <span>3+ years · KDP &amp; IngramSpark certified workflow · Authors served across all regions</span>
       </div>
 
       <div class="foot-bottom">

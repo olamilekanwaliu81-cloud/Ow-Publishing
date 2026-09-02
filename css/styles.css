@@ -111,15 +111,15 @@ p  { margin: 0 0 1rem; }
 }
 .nav {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 20px; min-height: 68px;
+  gap: 14px; min-height: 58px;
 }
-.brand { display: flex; align-items: center; gap: 11px; color: var(--on-navy); flex-shrink: 0; }
-.brand img { width: 38px; height: 38px; border-radius: 50%; }
-.brand-name { font-family: var(--serif); font-size: 1.28rem; font-weight: 600; line-height: 1; white-space: nowrap; }
+.brand { display: flex; align-items: center; gap: 9px; color: var(--on-navy); flex-shrink: 0; }
+.brand img { width: 32px; height: 32px; border-radius: 50%; }
+.brand-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; line-height: 1; white-space: nowrap; }
 
-.nav-links { display: flex; align-items: center; gap: 22px; list-style: none; margin: 0; padding: 0; }
+.nav-links { display: flex; align-items: center; gap: 16px; list-style: none; margin: 0; padding: 0; }
 .nav-links a {
-  color: var(--on-navy-dim); font-size: .9rem; font-weight: 500; white-space: nowrap;
+  color: var(--on-navy-dim); font-size: .85rem; font-weight: 500; white-space: nowrap;
   padding: 6px 0; position: relative; transition: color var(--t);
 }
 .nav-links a::after {
@@ -128,8 +128,8 @@ p  { margin: 0 0 1rem; }
 }
 .nav-links a:hover { color: var(--on-navy); }
 .nav-links a:hover::after { width: 100%; }
-.nav-cta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-.nav-cta .btn { padding: .62em 1.25em; font-size: .9rem; }
+.nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.nav-cta .btn { padding: .5em 1em; font-size: .84rem; }
 .nav-cta-mobile { display: none; }
 
 .nav-toggle {
@@ -1095,6 +1095,27 @@ p  { margin: 0 0 1rem; }
 }
 .guardrail b { color: var(--navy); }
 
+/* Actual-size book preview */
+.size-preview { margin-top: 24px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(18px, 2.4vw, 26px); max-width: 520px; }
+.sp-head { font-family: var(--sans); font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); }
+.sp-head span { display: block; margin-top: 4px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--ink-soft); font-size: .82rem; }
+.sp-stage {
+  margin-top: 14px; display: flex; justify-content: center; align-items: center;
+  padding: 20px; min-height: 200px; background: var(--cream-200); border-radius: 12px;
+}
+.sp-book {
+  position: relative; flex: 0 0 auto; background: #fff;
+  border: 1px solid var(--navy-700); border-left: 3px solid var(--navy);
+  box-shadow: 0 16px 34px -14px rgba(15,26,49,.45);
+}
+.sp-textarea { position: absolute; border: 1px dashed var(--gold-deep); background: rgba(212,162,74,.06); }
+.sp-caption { text-align: center; margin-top: 14px; font-family: var(--serif); color: var(--navy); font-size: 1.15rem; }
+.sp-caption small { display: block; font-family: var(--sans); color: var(--ink-soft); font-size: .8rem; margin-top: 3px; }
+.sp-legend { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 12px; font-size: .78rem; color: var(--ink-soft); }
+.sp-legend i { display: inline-block; width: 22px; height: 0; vertical-align: middle; margin-right: 6px; }
+.sp-legend .l-trim { border-top: 3px solid var(--navy); }
+.sp-legend .l-text { border-top: 2px dashed var(--gold-deep); }
+
 .send-specs { margin-top: 30px; }
 .spec-recap { background: var(--cream-200); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 22px; }
 .spec-recap .recap-title { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); margin: 0 0 12px; }
@@ -1187,11 +1208,13 @@ p  { margin: 0 0 1rem; }
   .pf-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .spec-grid { grid-template-columns: 1fr; }
+}
 
+/* Nav collapses to a hamburger below 1024px so the full bar never overflows/clips */
+@media (max-width: 1024px) {
   .nav-links, .nav-cta .btn { display: none; }
   .nav-cta-mobile { display: block; }
   .nav-toggle { display: flex; }
-  .brand-name { font-size: 1.12rem; }
   .nav.open .nav-links {
     display: flex; position: absolute; left: 0; right: 0; top: 100%;
     flex-direction: column; gap: 0; background: var(--navy-800);

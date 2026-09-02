@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Consultation | OW Publishing House</title>
+  <meta name="description" content="Book a consultation with OW Publishing House. Tell us about your book and pick a preferred time — we'll confirm your slot and map the right path for your book.">
+  <link rel="icon" href="assets/ow-logo-monogram.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=29">
+</head>
+<body>
+
+  <!-- ===================== HEADER / NAV (§2) ===================== -->
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="nav" id="nav">
+        <a class="brand" href="index.html" aria-label="OW Publishing House home">
+          <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram">
+          <span class="brand-name">OW Publishing House</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="self-publishing.html">Self-Publishing</a></li>
+          <li><a href="agent-route.html">The Agent Route</a></li>
+          <li><a href="local-print.html">Local Print</a></li>
+          <li><a href="published-books.html">Published Books</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation →</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn-gold" href="consultation.html" aria-current="page">Book a Consultation</a>
+          <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== HEADER ===================== -->
+    <section class="lane-hero">
+      <div class="wrap gallery-header">
+        <p class="crumbs"><a href="index.html">Home</a><span class="sep">›</span>Book a Consultation</p>
+        <p class="eyebrow">Let's talk about your book</p>
+        <h1>Book a consultation</h1>
+        <p class="lead">Tell us about your book and pick a time that suits you. We'll confirm your slot, then use the call to map the right path — honestly, with no pressure.</p>
+      </div>
+    </section>
+
+    <!-- ===================== BOOKING (§11) ===================== -->
+    <section class="section why" id="book">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p class="eyebrow" style="color:var(--gold-soft)">What to expect</p>
+            <h2 style="color:#fff;">A straight, useful conversation</h2>
+            <p style="color:var(--on-navy-dim);">No hard sell — just an honest look at your book, your goals, and the path that fits. You'll leave the call knowing your options and a clear next step.</p>
+
+            <ul class="contact-list">
+              <li><span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span><span><b>On the call</b>We listen, recommend your best-fit lane, and outline scope, timeline and a quote.</span></li>
+              <li><span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg></span><span><b>Prefer to message first?</b><a href="https://wa.me/2349042534953">WhatsApp us</a> or call <a href="tel:+2348106004342">0810 600 4342</a>.</span></li>
+              <li><span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg></span><span><b>Response time</b>We confirm your slot within <span data-placeholder="response-time">[1–2 business days]</span>.</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <form class="form-card" id="bookingForm" data-ow-form data-success="#bookingSuccess"
+                  action="https://formspree.io/f/mlgqyada" method="POST">
+              <input type="hidden" name="_subject" value="New consultation request — OW Publishing House">
+              <input type="hidden" name="source" value="Consultation page">
+              <div class="form-grid">
+                <div class="field"><label for="bkName">Name <span class="req">*</span></label><input id="bkName" name="Name" type="text" placeholder="Your full name" required></div>
+                <div class="field"><label for="bkEmail">Email <span class="req">*</span></label><input id="bkEmail" name="Email" type="email" placeholder="you@email.com" required></div>
+                <div class="field"><label for="bkWhats">WhatsApp / phone <span class="req">*</span></label><input id="bkWhats" name="WhatsApp" type="tel" placeholder="+234 …" required></div>
+                <div class="field">
+                  <label for="bkService">What's it about?</label>
+                  <select id="bkService" name="Service">
+                    <option value="" selected disabled>Choose a path…</option>
+                    <option>Self-Publishing (publish &amp; grow)</option>
+                    <option>The Agent Route (reach an agent)</option>
+                    <option>Local Print (printed copies)</option>
+                    <option>Not sure — advise me</option>
+                  </select>
+                </div>
+                <div class="field"><label for="bkDate">Preferred day</label><input id="bkDate" name="Preferred day" type="date"></div>
+                <div class="field">
+                  <label for="bkTime">Preferred time</label>
+                  <select id="bkTime" name="Preferred time" disabled>
+                    <option value="" selected disabled>Pick a day first…</option>
+                  </select>
+                  <span class="hint" id="bkTimeHint">Weekdays: 1–4 PM &amp; 8 PM–12 AM · Weekends: any time. We'll confirm the slot with you.</span>
+                </div>
+                <div class="field full">
+                  <label for="bkMsg">Tell us about your book <span class="req">*</span></label>
+                  <textarea id="bkMsg" name="Message" placeholder="Genre, where you are with it, and what you'd like help with…" required></textarea>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-gold btn-lg" type="submit">Request my consultation <span class="arrow">→</span></button>
+                <p class="form-privacy">We use your details only to arrange and prepare for your consultation.</p>
+              </div>
+            </form>
+
+            <div class="form-success" id="bookingSuccess" role="status" aria-live="polite">
+              <div class="tick" aria-hidden="true">✓</div>
+              <h3>Thanks — your request is in</h3>
+              <p>We'll confirm your consultation slot shortly. Prefer to talk now? <a href="https://wa.me/2349042534953" style="color:var(--gold-deep);font-weight:600;">WhatsApp us</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LANES RECAP (§11) ===================== -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head center">
+          <p class="eyebrow">Not sure which fits?</p>
+          <h2>Arrive already pointed the right way</h2>
+        </div>
+        <div class="path-grid">
+          <article class="path-card">
+            <p class="path-for">Self-Publishing</p>
+            <h3>Publish &amp; sell your book</h3>
+            <p>Production across the major platforms, plus a Book Growth retainer that actually works on sales.</p>
+            <a class="card-link" href="self-publishing.html">Explore <span class="arrow">→</span></a>
+          </article>
+          <article class="path-card">
+            <p class="path-for">The Agent Route</p>
+            <h3>Reach a literary agent</h3>
+            <p>We prepare and position your manuscript, query and synopsis for the right agents — honestly framed.</p>
+            <a class="card-link" href="agent-route.html">Explore <span class="arrow">→</span></a>
+          </article>
+          <article class="path-card">
+            <p class="path-for">Local Print</p>
+            <h3>Printed copies, delivered</h3>
+            <p>Professionally printed copies shipped to you — we hold no stock, the copies are yours.</p>
+            <a class="card-link" href="local-print.html">Explore <span class="arrow">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER (§2) ===================== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <a class="brand" href="index.html">
+            <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram" style="width:44px;height:44px;border-radius:50%;">
+            <span class="brand-name">OW Publishing House</span>
+          </a>
+          <p>A hybrid publishing house that produces, publishes and grows the sales of authors' books — foreign and local.</p>
+          <p class="foot-nostock">We hold no stock. You keep your book, your rights, and your copies.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="self-publishing.html">Self-Publishing</a></li>
+            <li><a href="agent-route.html">The Agent Route</a></li>
+            <li><a href="local-print.html">Local Print</a></li>
+            <li><a href="published-books.html">Published Books</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Connect</h4>
+          <ul data-placeholder="contact">
+            <li><a href="mailto:hello@owpublishiing.com">hello@owpublishiing.com</a></li>
+            <li><a href="https://wa.me/2349042534953">WhatsApp · 0904 253 4953</a></li>
+            <li><a href="tel:+2348106004342">Call · 0810 600 4342</a></li>
+            <li><a href="consultation.html">Book a Consultation</a></li>
+            <li><a href="https://www.linkedin.com/company/olamilekanwaliu/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.upwork.com/agencies/2075718404629570653/" target="_blank" rel="noopener">Upwork profile</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-trust">
+        <span class="badge">★</span>
+        <span>3+ years · KDP &amp; IngramSpark certified workflow · Authors served across all regions</span>
+      </div>
+
+      <div class="foot-bottom">
+        <span>© <span id="year"></span> OW Publishing House. All rights reserved.</span>
+        <span>
+          <a href="terms.html">Terms</a> ·
+          <a href="rights.html">Author Rights &amp; Ownership Statement</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=3"></script>
+</body>
+</html>
