@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=31">
+  <link rel="stylesheet" href="css/styles.css?v=43">
 </head>
 <body>
 
@@ -45,7 +45,7 @@
         <p class="crumbs"><a href="index.html">Home</a><span class="sep">›</span><a href="self-publishing.html#toolkit">Author Toolkit</a><span class="sep">›</span>Interior Calculator</p>
         <p class="eyebrow">Author Toolkit · Free tool</p>
         <h1>Interior Layout Calculator</h1>
-        <p class="lead">Get the correct margins, gutter and bleed for the inside of your book — so text never gets swallowed into the spine or trimmed off the edge.</p>
+        <p class="lead">Get the correct margins, gutter and bleed for the inside of your book, so text never gets swallowed into the spine or trimmed off the edge.</p>
       </div>
     </section>
 
@@ -85,14 +85,14 @@
                   <input id="inBleed" type="checkbox" style="width:auto;">
                   My interior has images or colour running to the edge (full-bleed)
                 </label>
-                <span class="hint">Leave unchecked for a text-only interior — it usually needs no bleed.</span>
+                <span class="hint">Leave unchecked for a text-only interior, it usually needs no bleed.</span>
               </div>
             </div>
           </div>
 
           <!-- Book preview (sits under the inputs) -->
           <div class="size-preview">
-            <p class="sp-head">See it to scale <span>As you change the trim size, this shows the book's real shape and relative size — the dashed area is your text (inside the margins &amp; gutter).</span></p>
+            <p class="sp-head">See it to scale <span>As you change the trim size, this shows the book's real shape and relative size, the dashed area is your text (inside the margins &amp; gutter).</span></p>
             <div class="sp-stage">
               <div class="sp-book" id="spBook"><div class="sp-textarea" id="spText"></div></div>
             </div>
@@ -116,7 +116,7 @@
 
         <div class="guardrail">
           <span aria-hidden="true">🛈</span>
-          <span><b>Which spec is this?</b> These recommendations use the <b>Amazon KDP</b> model — the anchor platform. Minimum margin and gutter rules differ slightly on IngramSpark and other printers, and they grow with page count. OW always checks and adjusts final files before upload.</span>
+          <span><b>Which spec is this?</b> These recommendations use the <b>Amazon KDP</b> model, the anchor platform. Minimum margin and gutter rules differ slightly on IngramSpark and other printers, and they grow with page count. OW always checks and adjusts final files before upload.</span>
         </div>
 
         <!-- SEND TO OW -->
@@ -128,11 +128,11 @@
           </div>
           <form class="form-card" id="interiorSend" data-ow-form data-success="#interiorSuccess"
                 action="https://formspree.io/f/mlgqyada" method="POST">
-            <input type="hidden" name="_subject" value="Interior Calculator — specs from an author">
+            <input type="hidden" name="_subject" value="Interior Calculator, specs from an author">
             <input type="hidden" name="Calculated interior spec" id="inHidden">
 
             <div class="spec-recap" aria-live="polite">
-              <p class="recap-title">Your calculated specs — sent with this form</p>
+              <p class="recap-title">Your calculated specs, sent with this form</p>
               <ul>
                 <li><span>Page size</span><b id="rcInSize">—</b></li>
                 <li><span>Page count</span><b id="rcInPages">—</b></li>
@@ -149,7 +149,7 @@
               <div class="field"><label for="inWhats">WhatsApp <span class="req">*</span></label><input id="inWhats" name="WhatsApp" type="tel" placeholder="+234 …" required></div>
               <div class="field"><label for="inTitle">Book title</label><input id="inTitle" name="Book title" type="text"></div>
               <div class="field"><label for="inSoftware">Software you'll use</label>
-                <select id="inSoftware" name="Software"><option value="" disabled selected>Optional…</option><option>Microsoft Word</option><option>Google Docs</option><option>Adobe InDesign</option><option>Affinity Publisher</option><option>Not sure — advise me</option></select>
+                <select id="inSoftware" name="Software"><option value="" disabled selected>Optional…</option><option>Microsoft Word</option><option>Google Docs</option><option>Adobe InDesign</option><option>Affinity Publisher</option><option>Not sure, advise me</option></select>
               </div>
               <div class="field"><label for="inDeadline">When do you need it?</label><input id="inDeadline" name="Deadline" type="text" placeholder="e.g. within 3 weeks"></div>
               <div class="field full"><label for="inNotes">Notes for formatting</label>
@@ -163,7 +163,7 @@
           </form>
           <div class="form-success" id="interiorSuccess" role="status" aria-live="polite">
             <div class="tick" aria-hidden="true">✓</div>
-            <h3>Got it — your interior specs are in</h3>
+            <h3>Got it, your interior specs are in</h3>
             <p>We'll be in touch about formatting your interior. Prefer to chat? <a href="https://wa.me/2349042534953" style="color:var(--gold-deep);font-weight:600;">WhatsApp us</a>.</p>
           </div>
         </div>
@@ -192,7 +192,7 @@
             <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram" style="width:44px;height:44px;border-radius:50%;">
             <span class="brand-name">OW Publishing House</span>
           </a>
-          <p>A hybrid publishing house that produces, publishes and grows the sales of authors' books — foreign and local.</p>
+          <p>A hybrid publishing house that produces, publishes and grows the sales of authors' books, foreign and local.</p>
           <p class="foot-nostock">We hold no stock. You keep your book, your rights, and your copies.</p>
         </div>
         <div class="foot-col">
@@ -226,7 +226,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=2"></script>
-  <script src="js/toolkit.js?v=5"></script>
+  <script src="js/main.js?v=3"></script>
+  <script src="js/toolkit.js?v=3"></script>
 </body>
 </html>

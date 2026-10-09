@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=29">
+  <link rel="stylesheet" href="css/styles.css?v=43">
 </head>
 <body>
 
@@ -45,7 +45,7 @@
         <p class="crumbs"><a href="index.html">Home</a><span class="sep">›</span><a href="self-publishing.html#toolkit">Author Toolkit</a><span class="sep">›</span>Cover Calculator</p>
         <p class="eyebrow">Author Toolkit · Free tool</p>
         <h1>Cover Template Calculator</h1>
-        <p class="lead">Get your exact spine width and full-wrap cover canvas — so your cover is sized right the first time and never gets rejected at upload.</p>
+        <p class="lead">Get your exact spine width and full-wrap cover canvas, so your cover is sized right the first time and never gets rejected at upload.</p>
       </div>
     </section>
 
@@ -53,6 +53,7 @@
       <div class="wrap">
         <div id="coverCalc" class="calc">
 
+          <div class="calc-left">
           <!-- INPUTS -->
           <div class="calc-inputs">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
@@ -98,13 +99,37 @@
             </div>
           </div>
 
+          <!-- Full-wrap preview (sits under the inputs) -->
+          <div class="size-preview">
+            <p class="sp-head">See the full wrap to scale <span>Back cover + spine + front cover, with bleed, the whole canvas you design on. The gold strip is the spine.</span></p>
+            <div class="sp-stage">
+              <div class="sp-wrap" id="cvWrap">
+                <div class="sp-trim" id="cvTrimBox">
+                  <div class="sp-face" id="cvBack"><span class="sp-safe"></span><span class="sp-barcode"></span><span class="sp-flabel">Back</span></div>
+                  <div class="sp-hinge" id="cvHingeL"></div>
+                  <div class="sp-spine2" id="cvSpineBox"></div>
+                  <div class="sp-hinge" id="cvHingeR"></div>
+                  <div class="sp-face" id="cvFront"><span class="sp-safe"></span><span class="sp-flabel">Front</span></div>
+                </div>
+                <span class="cbadge b1">1</span>
+                <span class="cbadge b2">2</span>
+                <span class="cbadge b3">3</span>
+                <span class="cbadge b4">4</span>
+                <span class="cbadge b5">5</span>
+                <span class="cbadge b6" id="cvBadge6" style="display:none;">6</span>
+                <span class="cbadge b7" id="cvBadge7" style="display:none;">7</span>
+              </div>
+            </div>
+            <p class="sp-caption" id="cvCaption">Enter trim size and page count to preview the cover.</p>
+          </div>
+          </div><!-- /calc-left -->
+
           <!-- RESULTS -->
           <div class="calc-results">
-            <p class="eyebrow">Your cover canvas</p>
-            <h3 style="margin-bottom:8px;">Design at these sizes</h3>
-            <div class="result-row"><span class="rl">Spine width</span><span class="rv" id="cvSpine">—</span></div>
-            <div class="result-row"><span class="rl">Full cover width <small>back + spine + front + bleed</small></span><span class="rv" id="cvFullW">—</span></div>
-            <div class="result-row"><span class="rl">Full cover height <small>trim + top/bottom bleed</small></span><span class="rv" id="cvFullH">—</span></div>
+            <p class="eyebrow">Your cover dimensions</p>
+            <h3 style="margin-bottom:6px;">Every measurement, numbered</h3>
+            <p style="color:var(--on-navy-dim);font-size:.86rem;margin-bottom:6px;">Each number matches the diagram on the left.</p>
+            <table class="dim-table"><tbody id="cvDims"></tbody></table>
             <p class="calc-summary" id="cvSummary">Enter your trim size and page count to see your exact canvas size.</p>
             <p class="calc-flag" id="cvFlag"></p>
           </div>
@@ -112,7 +137,7 @@
 
         <div class="guardrail">
           <span aria-hidden="true">🛈</span>
-          <span><b>Which spec is this?</b> These figures use the <b>Amazon KDP</b> model — the anchor platform. Paper-thickness and bleed values differ slightly on IngramSpark and other printers, and hardcover case-wrap / dust-jacket covers need extra wrap allowance. OW always checks and adjusts final files before upload.</span>
+          <span><b>Which spec is this?</b> These figures use the <b>Amazon KDP</b> model, the anchor platform. Paper-thickness and bleed values differ slightly on IngramSpark and other printers, and hardcover case-wrap / dust-jacket covers need extra wrap allowance. OW always checks and adjusts final files before upload.</span>
         </div>
 
         <!-- SEND TO OW -->
@@ -124,11 +149,11 @@
           </div>
           <form class="form-card" id="coverSend" data-ow-form data-success="#coverSuccess"
                 action="https://formspree.io/f/mlgqyada" method="POST">
-            <input type="hidden" name="_subject" value="Cover Calculator — specs from an author">
+            <input type="hidden" name="_subject" value="Cover Calculator, specs from an author">
             <input type="hidden" name="Calculated cover spec" id="cvHidden">
 
             <div class="spec-recap" aria-live="polite">
-              <p class="recap-title">Your calculated specs — sent with this form</p>
+              <p class="recap-title">Your calculated specs, sent with this form</p>
               <ul>
                 <li><span>Trim size</span><b id="rcTrim">—</b></li>
                 <li><span>Page count</span><b id="rcPages">—</b></li>
@@ -159,7 +184,7 @@
           </form>
           <div class="form-success" id="coverSuccess" role="status" aria-live="polite">
             <div class="tick" aria-hidden="true">✓</div>
-            <h3>Got it — your cover specs are in</h3>
+            <h3>Got it, your cover specs are in</h3>
             <p>We'll be in touch about designing your cover to size. Prefer to chat? <a href="https://wa.me/2349042534953" style="color:var(--gold-deep);font-weight:600;">WhatsApp us</a>.</p>
           </div>
         </div>
@@ -170,7 +195,7 @@
       <div class="wrap">
         <p class="eyebrow" style="color:var(--gold-soft)">The companion tool</p>
         <h2>Now set up your interior</h2>
-        <p>Your cover's sorted — the Interior Layout Calculator gives you the right margins, gutter and bleed for the inside of the book.</p>
+        <p>Your cover's sorted, the Interior Layout Calculator gives you the right margins, gutter and bleed for the inside of the book.</p>
         <div class="cta-actions">
           <a class="btn btn-gold btn-lg" href="interior-calculator.html">Open the Interior Calculator <span class="arrow">→</span></a>
           <a class="btn btn-ghost btn-lg" href="self-publishing.html">Back to Self-Publishing</a>
@@ -188,7 +213,7 @@
             <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram" style="width:44px;height:44px;border-radius:50%;">
             <span class="brand-name">OW Publishing House</span>
           </a>
-          <p>A hybrid publishing house that produces, publishes and grows the sales of authors' books — foreign and local.</p>
+          <p>A hybrid publishing house that produces, publishes and grows the sales of authors' books, foreign and local.</p>
           <p class="foot-nostock">We hold no stock. You keep your book, your rights, and your copies.</p>
         </div>
         <div class="foot-col">
@@ -222,7 +247,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
   <script src="js/toolkit.js?v=3"></script>
 </body>
 </html>

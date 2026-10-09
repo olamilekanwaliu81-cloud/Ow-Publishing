@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=29">
+  <link rel="stylesheet" href="css/styles.css?v=43">
 </head>
 <body>
 
@@ -47,7 +47,7 @@
     <section class="section platforms" id="gallery">
       <div class="wrap">
         <!-- OWNER NOTE (not shown to visitors): cards marked "Placeholder" show the layout.
-             Replace each with a real published title — cover, book name, author and its retailer
+             Replace each with a real published title, cover, book name, author and its retailer
              (Amazon / store) link. Soul Sneakers is the one real entry so far; add its live Amazon
              URL where marked (data-placeholder="amazon-url"). Do NOT invent book titles or author names. -->
 
@@ -63,145 +63,142 @@
           </form>
         </div>
 
-        <!-- Featured banner (PLACEHOLDER showcase images — swap the mock covers for real book photos) -->
-        <div class="pb-banner" data-placeholder="banner-images">
+        <!-- Featured banner, real production mockup (cover + interior spread) -->
+        <div class="pb-banner">
+          <div class="pb-banner-glow" aria-hidden="true"></div>
           <div class="pb-banner-text">
             <h2>Everything your book needs, in one house</h2>
-            <p>We produce, publish, and grow the sales of your book — foreign and local — and you keep every right and every copy.</p>
+            <p>We produce, publish, and grow the sales of your book, foreign and local, and you keep every right and every copy.</p>
             <span class="pb-banner-brand">OW Publishing House</span>
           </div>
-          <div class="pb-banner-books" aria-hidden="true">
-            <div class="book-mock" style="background:linear-gradient(160deg,#1d2f57,#0c1730);">
-              <div class="bm-top">Memoir</div><div class="bm-title">Your Story</div><div class="bm-author">Author</div>
-            </div>
-            <div class="book-mock">
-              <div class="bm-top">OW Production</div><div class="bm-title">Soul Sneakers</div><div class="bm-author">Passport to Play</div>
-            </div>
-            <div class="book-mock" style="background:linear-gradient(155deg,#1d3a2e,#0c2018);">
-              <div class="bm-top">Devotional</div><div class="bm-title">Quiet Mornings</div><div class="bm-author">Author</div>
-            </div>
+          <div class="pb-banner-mock" aria-hidden="true">
+            <img src="assets/mockup-flagged-restored.png?v=3" alt="">
           </div>
         </div>
 
-        <!-- Category filter -->
-        <div class="filter-tabs" id="bookFilters">
-          <button class="filter-tab active" data-filter="all">All books <span class="count">6</span></button>
-          <button class="filter-tab" data-filter="children">Children's <span class="count">2</span></button>
-          <button class="filter-tab" data-filter="memoir">Memoir <span class="count">2</span></button>
-          <button class="filter-tab" data-filter="devotional">Devotional <span class="count">1</span></button>
-          <button class="filter-tab" data-filter="nonfiction">Non-fiction <span class="count">1</span></button>
+        <!-- Category filter + count -->
+        <div class="pb-toolbar">
+          <div class="filter-tabs" id="bookFilters">
+            <button class="filter-tab active" data-filter="all">All books <span class="count">7</span></button>
+            <button class="filter-tab" data-filter="children">Children's <span class="count">1</span></button>
+            <button class="filter-tab" data-filter="memoir">Memoir <span class="count">2</span></button>
+            <button class="filter-tab" data-filter="nonfiction">Non-fiction <span class="count">4</span></button>
+          </div>
+          <p class="pb-count">Author masterpieces <span>7</span></p>
         </div>
 
         <div class="book-grid">
 
-          <!-- REAL: Soul Sneakers · published on Amazon + IngramSpark -->
-          <!-- To use a real cover: replace <div class="book-cover ph cv-gold">…</div> with
-               <div class="book-cover"><img src="assets/soul-sneakers.jpg" alt="Soul Sneakers cover"> …badge/hover… </div> -->
+          <!-- REAL: Soul Sneakers · published on Amazon KDP -->
           <article class="book-card" data-cat="children">
-            <div class="book-cover ph cv-gold">
-              <span class="bc-top">OW Production</span>
-              <span class="bc-title">Soul Sneakers</span>
+            <div class="book-cover">
+              <img src="assets/book-soul-sneakers.jpg" alt="Soul Sneakers: Passport to Play by CB Johnson, cover">
               <span class="book-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazon</span>
               <div class="book-hover">
                 <span class="bh-label">Buy it on</span>
-                <a class="bh-btn amazon" href="#" data-placeholder="amazon-url" target="_blank" rel="noopener">Amazon <span class="arrow">→</span></a>
-                <a class="bh-btn" href="#" data-placeholder="ingramspark-url" target="_blank" rel="noopener">IngramSpark <span class="arrow">→</span></a>
+                <a class="bh-btn amazon" href="https://a.co/d/0fu3pB9c" target="_blank" rel="noopener">Amazon <span class="arrow">→</span></a>
               </div>
             </div>
             <div class="book-info">
               <div class="book-title-txt">Soul Sneakers: Passport to Play</div>
-              <div class="book-author-txt">Children's · KDP + IngramSpark</div>
+              <div class="book-author-txt">CB Johnson · Children's</div>
             </div>
           </article>
 
-          <!-- PLACEHOLDER cards — replace cover, title, author and the hover platform links with real ones -->
+          <!-- REAL: Therapy Changed My Suicidal Thoughts to Self-Love! · Amazon KDP -->
           <article class="book-card" data-cat="memoir">
-            <div class="book-cover ph cv-navy">
-              <span class="bc-top">Memoir</span>
-              <span class="bc-title">Your Story</span>
-              <span class="ph-ribbon">Placeholder</span>
+            <div class="book-cover">
+              <img src="assets/book-therapy-selflove.jpg" alt="Therapy Changed My Suicidal Thoughts to Self-Love! by Paula Axelrod, cover">
               <span class="book-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazon</span>
               <div class="book-hover">
                 <span class="bh-label">Buy it on</span>
-                <a class="bh-btn amazon" href="#" data-placeholder="amazon-url">Amazon <span class="arrow">→</span></a>
+                <a class="bh-btn amazon" href="https://www.amazon.com/dp/B0H65T561J" target="_blank" rel="noopener">Amazon <span class="arrow">→</span></a>
               </div>
             </div>
             <div class="book-info">
-              <div class="book-title-txt" data-placeholder="book">Your published title</div>
-              <div class="book-author-txt">Author name</div>
+              <div class="book-title-txt">Therapy Changed My Suicidal Thoughts to Self-Love!</div>
+              <div class="book-author-txt">Paula Axelrod · Memoir</div>
             </div>
           </article>
 
-          <article class="book-card" data-cat="devotional">
-            <div class="book-cover ph cv-teal">
-              <span class="bc-top">Devotional</span>
-              <span class="bc-title">Quiet Mornings</span>
-              <span class="ph-ribbon">Placeholder</span>
-              <span class="book-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazon</span>
-              <div class="book-hover">
-                <span class="bh-label">Buy it on</span>
-                <a class="bh-btn amazon" href="#" data-placeholder="amazon-url">Amazon <span class="arrow">→</span></a>
-                <a class="bh-btn" href="#" data-placeholder="applebooks-url">Apple Books <span class="arrow">→</span></a>
-              </div>
-            </div>
-            <div class="book-info">
-              <div class="book-title-txt" data-placeholder="book">Your published title</div>
-              <div class="book-author-txt">Author name</div>
-            </div>
-          </article>
-
+          <!-- REAL: From Anxious to Confident (Workbook) · Amazon KDP -->
           <article class="book-card" data-cat="nonfiction">
-            <div class="book-cover ph cv-plum">
-              <span class="bc-top">Non-fiction</span>
-              <span class="bc-title">The Method</span>
-              <span class="ph-ribbon">Placeholder</span>
+            <div class="book-cover">
+              <img src="assets/book-anxious-confident.jpg" alt="From Anxious to Confident: Workbook by Rima Danielle Jomaa, cover">
               <span class="book-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazon</span>
               <div class="book-hover">
                 <span class="bh-label">Buy it on</span>
-                <a class="bh-btn amazon" href="#" data-placeholder="amazon-url">Amazon <span class="arrow">→</span></a>
-                <a class="bh-btn" href="#" data-placeholder="kobo-url">Kobo <span class="arrow">→</span></a>
-                <a class="bh-btn" href="#" data-placeholder="googleplay-url">Google Play <span class="arrow">→</span></a>
+                <a class="bh-btn amazon" href="https://a.co/d/0c7k62NC" target="_blank" rel="noopener">Amazon <span class="arrow">→</span></a>
               </div>
             </div>
             <div class="book-info">
-              <div class="book-title-txt" data-placeholder="book">Your published title</div>
-              <div class="book-author-txt">Author name</div>
+              <div class="book-title-txt">From Anxious to Confident: Workbook</div>
+              <div class="book-author-txt">Rima Danielle Jomaa · Non-fiction</div>
             </div>
           </article>
 
-          <article class="book-card" data-cat="children">
-            <div class="book-cover ph cv-rust">
-              <span class="bc-top">Children's</span>
-              <span class="bc-title">Little Big Dreams</span>
-              <span class="ph-ribbon">Placeholder</span>
+          <!-- REAL: Foundations · Amazon KDP -->
+          <article class="book-card" data-cat="nonfiction">
+            <div class="book-cover">
+              <img src="assets/book-foundations.jpg" alt="Foundations: Heaven's Blueprint for Kingdom Builders by Joseph Bunch, cover">
               <span class="book-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazon</span>
               <div class="book-hover">
                 <span class="bh-label">Buy it on</span>
-                <a class="bh-btn amazon" href="#" data-placeholder="amazon-url">Amazon <span class="arrow">→</span></a>
+                <a class="bh-btn amazon" href="https://a.co/d/07i0k6x8" target="_blank" rel="noopener">Amazon <span class="arrow">→</span></a>
+                <a class="bh-btn" href="https://bookshop.org/p/books/foundations-heavens-blueprint-for-kingdom-builders/a4832783a88a3ba2?ean=9798182759847" target="_blank" rel="noopener">Bookshop <span class="arrow">→</span></a>
               </div>
             </div>
             <div class="book-info">
-              <div class="book-title-txt" data-placeholder="book">Your published title</div>
-              <div class="book-author-txt">Author name</div>
+              <div class="book-title-txt">Foundations: Heaven's Blueprint for Kingdom Builders</div>
+              <div class="book-author-txt">Joseph Bunch · Non-fiction</div>
             </div>
           </article>
 
+          <!-- REAL: GEN B: Generation Blessed · Bookshop / IngramSpark -->
           <article class="book-card" data-cat="memoir">
-            <div class="book-cover ph cv-slate">
-              <span class="bc-top">Memoir</span>
-              <span class="bc-title">Full Circle</span>
-              <span class="ph-ribbon">Placeholder</span>
-              <span class="book-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazon</span>
+            <div class="book-cover">
+              <img src="assets/book-gen-b.jpg" alt="GEN B: Generation Blessed, The Story of Myron Hill by M.D. Hill, cover">
+              <span class="book-badge store"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Bookshop</span>
               <div class="book-hover">
                 <span class="bh-label">Buy it on</span>
-                <a class="bh-btn amazon" href="#" data-placeholder="amazon-url">Amazon <span class="arrow">→</span></a>
-                <a class="bh-btn" href="#" data-placeholder="ingramspark-url">IngramSpark <span class="arrow">→</span></a>
-                <a class="bh-btn" href="#" data-placeholder="applebooks-url">Apple Books <span class="arrow">→</span></a>
+                <a class="bh-btn" href="https://bookshop.org/p/books/gen-b-generation-blessed/291d77d22a1b957f?ean=9798234164933" target="_blank" rel="noopener">Bookshop <span class="arrow">→</span></a>
               </div>
             </div>
             <div class="book-info">
-              <div class="book-title-txt" data-placeholder="book">Your published title</div>
-              <div class="book-author-txt">Author name</div>
+              <div class="book-title-txt">GEN B: Generation Blessed</div>
+              <div class="book-author-txt">M.D. Hill · Memoir</div>
+            </div>
+          </article>
+
+          <!-- REAL (coming soon): Earths Hidden Treasures · Amazon KDP, not yet published -->
+          <article class="book-card" data-cat="nonfiction">
+            <div class="book-cover">
+              <img src="assets/book-earths-treasures.jpg" alt="Earths Hidden Treasures: A Beginners Guide to Crystals and Fossils by Pure Crystal Co., cover">
+              <span class="book-badge soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Coming soon</span>
+              <div class="book-hover">
+                <span class="bh-label">Publishing soon</span>
+                <p class="bh-soon">Earths Hidden Treasures releases soon.<span>On Amazon</span></p>
+              </div>
+            </div>
+            <div class="book-info">
+              <div class="book-title-txt">Earths Hidden Treasures</div>
+              <div class="book-author-txt">Pure Crystal Co. · Non-fiction</div>
+            </div>
+          </article>
+
+          <!-- REAL (coming soon): Judge Not · Amazon KDP + IngramSpark, not yet published -->
+          <article class="book-card" data-cat="nonfiction">
+            <div class="book-cover">
+              <img src="assets/book-judge-not.jpg" alt="Judge Not: Why We Divide, and How Love Shows a Better Way by Catherine Baldwin, cover">
+              <span class="book-badge soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Coming soon</span>
+              <div class="book-hover">
+                <span class="bh-label">Publishing soon</span>
+                <p class="bh-soon">Judge Not releases soon.<span>On Amazon &amp; IngramSpark</span></p>
+              </div>
+            </div>
+            <div class="book-info">
+              <div class="book-title-txt">Judge Not</div>
+              <div class="book-author-txt">Catherine Baldwin · Non-fiction</div>
             </div>
           </article>
 
@@ -209,6 +206,7 @@
         <p class="no-results" hidden>No books match your search yet.</p>
       </div>
     </section>
+
 
     <!-- ===================== CTA ===================== -->
     <section class="section cta-band">
@@ -234,7 +232,7 @@
             <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram" style="width:44px;height:44px;border-radius:50%;">
             <span class="brand-name">OW Publishing House</span>
           </a>
-          <p>A hybrid publishing house that produces, publishes and grows the sales of authors' books — foreign and local.</p>
+          <p>A hybrid publishing house that produces, publishes and grows the sales of authors' books, foreign and local.</p>
           <p class="foot-nostock">We hold no stock. You keep your book, your rights, and your copies.</p>
         </div>
         <div class="foot-col">
@@ -276,6 +274,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
 </body>
 </html>

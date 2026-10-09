@@ -1,4 +1,4 @@
-// OW Publishing House — global site scripts
+// OW Publishing House, global site scripts
 
 // Mobile nav toggle
 (function () {
@@ -24,7 +24,7 @@
   if (y) y.textContent = new Date().getFullYear();
 })();
 
-// Consultation booking — availability-restricted time picker
+// Consultation booking, availability-restricted time picker
 // -------------------------------------------------------------
 // EDIT AVAILABILITY HERE. Hours in 24h; 24 = midnight. slotMinutes = gap between times.
 // weekday = Mon–Fri, weekend = Sat & Sun.
@@ -68,14 +68,14 @@
       slots.map(function (t) { return '<option value="' + fmt(t) + (isWeekend ? '' : '') + '">' + fmt(t) + '</option>'; }).join('');
     const hint = document.getElementById('bkTimeHint');
     if (hint) hint.textContent = isWeekend
-      ? 'Weekend — any time works. We’ll confirm the exact slot with you.'
+      ? 'Weekend, any time works. We’ll confirm the exact slot with you.'
       : 'Weekday availability: 1–4 PM and 8 PM–12 AM. We’ll confirm the exact slot.';
   }
   dateEl.addEventListener('change', populate);
   populate();
 })();
 
-// Resources / Blog — post listing with category tabs + pagination
+// Resources / Blog, post listing with category tabs + pagination
 (function () {
   const app = document.getElementById('blogApp');
   if (!app) return;
@@ -84,36 +84,36 @@
   const AUTHOR = 'Olamilekan Waliu';
   const POSTS = [
     { t: 'Self-publishing vs traditional publishing: the two roads', cat: 'Publishing paths', thumb: 'th-navy', date: 'Jul 20, 2026', url: 'article-two-roads.html', featured: true,
-      e: 'Every author faces one fork: do it yourself and keep more per book, or let a publisher take the risk and keep less. Here is how each road really works — and the one golden rule that separates a real publisher from a scam.' },
-    { t: 'What a literary agent really does — and how they get paid', cat: 'Agents', thumb: 'th-gold', date: 'Jun 5, 2026', url: 'article-literary-agents.html',
-      e: 'An agent only earns when you earn — 15% of what you make, and nothing upfront, ever. Here is what they actually do, and why "pay to be represented" is the industry’s biggest red flag.' },
+      e: 'Every author faces one fork: do it yourself and keep more per book, or let a publisher take the risk and keep less. Here is how each road really works, and the one golden rule that separates a real publisher from a scam.' },
+    { t: 'What a literary agent really does, and how they get paid', cat: 'Agents', thumb: 'th-gold', date: 'Jun 5, 2026', url: 'article-literary-agents.html',
+      e: 'An agent only earns when you earn, 15% of what you make, and nothing upfront, ever. Here is what they actually do, and why "pay to be represented" is the industry’s biggest red flag.' },
     { t: 'A real publisher never asks you for money', cat: 'Avoiding scams', thumb: 'th-plum', date: 'Apr 28, 2026', url: 'article-never-pay-to-publish.html',
       e: 'Vanity presses dressed up as "hybrid publishers" target writers who feel unworthy. Learn the bait-and-switch, the pre-sign checklist, and the one direction money should always flow.' },
     { t: 'What’s really inside a traditional publishing house', cat: 'Publishing paths', thumb: 'th-teal', date: 'Mar 15, 2026', url: 'article-inside-a-publisher.html',
-      e: 'A publisher isn’t one person — it’s a whole team, each with a specific job, all salaried. Here is who does what, and why that means you never pay them a fee to be published.' },
+      e: 'A publisher isn’t one person, it’s a whole team, each with a specific job, all salaried. Here is who does what, and why that means you never pay them a fee to be published.' },
     { t: 'Perfectionism is just fear in a nice outfit', cat: 'Writing & finishing', thumb: 'th-rust', date: 'Jan 30, 2026', url: 'article-finish-your-book.html',
       e: 'Most books die in the drafting, not the market. The label "aspiring", perfectionism, and waiting for motivation are the real killers. Here is the honest way to actually finish.' },
     { t: 'Standing out as an author in the AI era', cat: 'Writing & AI', thumb: 'th-navy', date: 'Nov 18, 2025', url: 'article-ai-era.html',
-      e: 'AI-generated books are flooding submission piles and store shelves. Here is how to use AI for the mechanical work while doubling down on the one thing it can’t fake — your voice.' },
+      e: 'AI-generated books are flooding submission piles and store shelves. Here is how to use AI for the mechanical work while doubling down on the one thing it can’t fake, your voice.' },
 
-    // Queued from the owner’s guides — write next.
+    // Queued from the owner’s guides, write next.
     { t: 'How much does it cost to self-publish a book?', cat: 'Costs & money', thumb: 'th-gold', date: 'Sep 24, 2025', url: null,
-      e: 'A plain breakdown of what you actually pay for — editing, cover, formatting, publishing setup and growth — and where authors overspend or get overcharged.' },
+      e: 'A plain breakdown of what you actually pay for, editing, cover, formatting, publishing setup and growth, and where authors overspend or get overcharged.' },
     { t: 'How to publish your book on Amazon KDP, step by step', cat: 'Self-publishing', thumb: 'th-teal', date: 'Aug 8, 2025', url: null,
       e: 'From manuscript file to a live listing: account setup, formats, metadata, pricing and the print-on-demand basics that trip most first-timers up.' },
     { t: 'KDP vs IngramSpark: which should you use?', cat: 'Distribution', thumb: 'th-plum', date: 'May 27, 2025', url: null,
-      e: 'The honest comparison — reach, print quality, bookstore access and cost — and why many books belong on both rather than one or the other.' },
+      e: 'The honest comparison, reach, print quality, bookstore access and cost, and why many books belong on both rather than one or the other.' },
     { t: 'How book royalties actually work', cat: 'Costs & money', thumb: 'th-navy', date: 'Mar 14, 2025', url: null,
-      e: 'Advances, earn-out, royalty percentages and what "net vs list" really means — so the numbers in a contract or a KDP dashboard finally make sense.' },
+      e: 'Advances, earn-out, royalty percentages and what "net vs list" really means, so the numbers in a contract or a KDP dashboard finally make sense.' },
     { t: 'Do you really need an ISBN?', cat: 'Self-publishing', thumb: 'th-rust', date: 'Dec 5, 2024', url: null,
       e: 'What an ISBN is, when a free one is fine, when you should own yours, and how it affects where and how your book can be sold.' },
-    { t: 'Ebook, paperback or hardcover — what should you publish?', cat: 'Self-publishing', thumb: 'th-teal', date: 'Oct 21, 2024', url: null,
+    { t: 'Ebook, paperback or hardcover, what should you publish?', cat: 'Self-publishing', thumb: 'th-teal', date: 'Oct 21, 2024', url: null,
       e: 'Each format suits a different book and budget. A simple way to decide what to launch with, and what to add later.' },
     { t: 'How to price your self-published book', cat: 'Costs & money', thumb: 'th-gold', date: 'Aug 19, 2024', url: null,
-      e: 'Pricing psychology, platform royalty tiers, and how to test your way to the number that actually sells — without leaving money on the table.' },
+      e: 'Pricing psychology, platform royalty tiers, and how to test your way to the number that actually sells, without leaving money on the table.' },
     { t: 'Self-publishing in Nigeria: a practical guide', cat: 'Publishing in Africa', thumb: 'th-navy', date: 'Jun 10, 2024', url: null,
       e: 'Local print vs global platforms, payment and delivery realities, and how Nigerian authors can reach both home and international readers.' },
-    { t: 'Marketing your book after launch — the honest version', cat: 'Marketing', thumb: 'th-plum', date: 'Apr 15, 2024', url: null,
+    { t: 'Marketing your book after launch, the honest version', cat: 'Marketing', thumb: 'th-plum', date: 'Apr 15, 2024', url: null,
       e: 'No virality gimmicks. The grounded, repeatable work that turns a live listing into steady sales: reviews, keywords, ads and a small real audience.' }
   ];
 
@@ -186,7 +186,7 @@
   render();
 })();
 
-// Published Books — category filter + search
+// Published Books, category filter + search
 (function () {
   const tabs = document.querySelectorAll('.filter-tab');
   const cards = document.querySelectorAll('.book-card');
@@ -223,7 +223,7 @@
 // -------------------------------------------------------------
 // SETUP: replace FORMSPREE_ID in the form's `action` with the real
 // endpoint (https://formspree.io/f/xxxxxxx). Optional: also POST to a
-// Google Apps Script Web App URL for Sheet logging — set data-sheet-hook
+// Google Apps Script Web App URL for Sheet logging, set data-sheet-hook
 // on the <form> to that URL. Until the endpoint is set, the form runs in
 // demo mode and just shows the confirmation without sending.
 (function () {
@@ -262,7 +262,7 @@
         if (res.ok) { done(); }
         else { throw new Error('Submit failed'); }
       } catch (err) {
-        alert('Sorry — something went wrong sending your specs. Please try again, or reach us on WhatsApp.');
+        alert('Sorry, something went wrong sending your specs. Please try again, or reach us on WhatsApp.');
         if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.label || 'Send'; }
       }
     });

@@ -1,15 +1,15 @@
 /* ============================================================
-   OW Publishing House — Author Toolkit calculators
+   OW Publishing House, Author Toolkit calculators
    ------------------------------------------------------------
    ONE config block for every constant (edit here, nowhere else).
-   Spec modelled on Amazon KDP — the anchor platform. IngramSpark
+   Spec modelled on Amazon KDP, the anchor platform. IngramSpark
    and other printers differ slightly; OW always checks final
    files before upload.
    ============================================================ */
 const OW_TOOLKIT = {
   printerName: 'Amazon KDP',
 
-  // Paper thickness — inches PER PAGE (drives spine width).
+  // Paper thickness, inches PER PAGE (drives spine width).
   paperThicknessIn: {
     white: 0.002252,
     cream: 0.0025,
@@ -21,10 +21,18 @@ const OW_TOOLKIT = {
   // Bleed on any edge that carries art to the trim (inches).
   bleedIn: 0.125,
 
+  // Hardcover case-wrap extras (KDP fixed values, inches). OW verifies final files.
+  hardcoverWrapIn: 0.591,   // amount that wraps around the board on every side
+  hardcoverHingeIn: 0.394,  // gap between spine and each cover
+  // Barcode block on the back cover (inches).
+  barcodeIn: { w: 2.0, h: 1.2 },
+  // Keep content this far inside the trim (safe margin, inches).
+  coverSafeIn: 0.125,
+
   // A spine can carry text only once the book is thick enough (KDP ≈ 100 pages).
   spineTextMinPages: 100,
 
-  // Interior INSIDE margin (gutter) grows with page count — KDP recommended (inches).
+  // Interior INSIDE margin (gutter) grows with page count, KDP recommended (inches).
   gutterBands: [
     { max: 150, inside: 0.375 },
     { max: 300, inside: 0.5 },
@@ -54,7 +62,7 @@ function owRound(n, u) { return u === 'mm' ? (n * 25.4).toFixed(1) : n.toFixed(3
 function owUnit(u) { return u === 'mm' ? 'mm' : 'in'; }
 
 /* ============================================================
-   12b — COVER TEMPLATE CALCULATOR
+   12b, COVER TEMPLATE CALCULATOR
    ============================================================ */
 (function () {
   const root = document.getElementById('coverCalc');
@@ -84,13 +92,35 @@ function owUnit(u) { return u === 'mm' ? 'mm' : 'in'; }
     if (interior.value === 'premium') thick = C.premiumColorThicknessIn;
 
     const spine = pg * thick;
-    const fullW = (2 * t.w) + spine + (2 * C.bleedIn);
-    const fullH = t.h + (2 * C.bleedIn);
+    const hc = binding.value === 'hardcover';
+    const wrap = hc ? C.hardcoverWrapIn : 0;
+    const hinge = hc ? C.hardcoverHingeIn : 0;
+    const outer = hc ? wrap : C.bleedIn;           // outer band = wrap (hardcover) or bleed (paperback)
+    const safe = C.coverSafeIn;
+    const fullW = (2 * t.w) + spine + (2 * hinge) + (2 * outer);
+    const fullH = t.h + (2 * outer);
     const canSpineText = pg >= C.spineTextMinPages;
 
-    el('cvSpine').textContent = t.w && pg ? owRound(spine, unit) + ' ' + owUnit(unit) : '—';
-    el('cvFullW').textContent = t.w && pg ? owRound(fullW, unit) + ' ' + owUnit(unit) : '—';
-    el('cvFullH').textContent = t.h ? owRound(fullH, unit) + ' ' + owUnit(unit) : '—';
+    // Numbered dimensions table (matches the diagram callouts)
+    const dims = el('cvDims');
+    if (dims) {
+      if (t.w && t.h && pg) {
+        const D = function (u, v) { return owRound(u, unit) + ' × ' + owRound(v, unit) + ' ' + owUnit(unit); };
+        const rows = [
+          [1, 'Full cover', fullW, fullH],
+          [2, 'Spine', spine, t.h],
+          [3, 'Front cover', t.w, t.h],
+          [4, 'Safe area', t.w - 2 * safe, t.h - 2 * safe],
+          [5, 'Barcode area', C.barcodeIn.w, C.barcodeIn.h]
+        ];
+        if (hc) { rows.push([6, 'Wrap', wrap, wrap]); rows.push([7, 'Hinge', hinge, fullH]); }
+        dims.innerHTML = rows.map(function (r) {
+          return '<tr><td class="dn">' + r[0] + '</td><td class="dd">' + r[1] + '</td><td class="dv">' + D(r[2], r[3]) + '</td></tr>';
+        }).join('');
+      } else {
+        dims.innerHTML = '<tr><td class="dd" colspan="3" style="color:var(--on-navy-dim)">Enter your trim size and page count to see every dimension.</td></tr>';
+      }
+    }
 
     const sum = el('cvSummary');
     if (t.w && t.h && pg) {
@@ -119,6 +149,33 @@ function owUnit(u) { return u === 'mm' ? 'mm' : 'in'; }
     setR('rcPaper', optText(interior) + ' · ' + optText(paper));
     setR('rcSpine', t.w && pg ? owRound(spine, unit) + ' ' + owUnit(unit) : '—');
     setR('rcFull', t.w && pg ? owRound(fullW, unit) + ' × ' + owRound(fullH, unit) + ' ' + owUnit(unit) : '—');
+
+    // Compact to-scale full-wrap preview (with hinges for hardcover)
+    const wrapEl = el('cvWrap'), trimBox = el('cvTrimBox'), back = el('cvBack'), spineBox = el('cvSpineBox'), front = el('cvFront'), cvCap = el('cvCaption');
+    const hingeL = el('cvHingeL'), hingeR = el('cvHingeR'), badge6 = el('cvBadge6'), badge7 = el('cvBadge7');
+    if (wrapEl && cvCap) {
+      if (t.w && t.h && pg) {
+        const S = 26; // px per inch, portable scale
+        const o = outer * S;
+        wrapEl.style.display = 'block';
+        wrapEl.style.width = (fullW * S) + 'px';
+        wrapEl.style.height = (fullH * S) + 'px';
+        trimBox.style.top = o + 'px'; trimBox.style.left = o + 'px'; trimBox.style.right = o + 'px'; trimBox.style.bottom = o + 'px';
+        back.style.width = (t.w * S) + 'px';
+        spineBox.style.width = (spine * S) + 'px';
+        front.style.width = (t.w * S) + 'px';
+        if (hingeL) hingeL.style.width = (hinge * S) + 'px';
+        if (hingeR) hingeR.style.width = (hinge * S) + 'px';
+        if (badge6) badge6.style.display = hc ? 'grid' : 'none';
+        if (badge7) badge7.style.display = hc ? 'grid' : 'none';
+        cvCap.innerHTML = 'Full cover ' + owRound(fullW, unit) + ' × ' + owRound(fullH, unit) + ' ' + owUnit(unit) +
+          '<small>' + (hc ? 'Back + hinge + spine + hinge + front + wrap' : 'Back + spine + front + bleed') +
+          ' · spine ' + owRound(spine, unit) + ' ' + owUnit(unit) + '</small>';
+      } else {
+        wrapEl.style.display = 'none';
+        cvCap.textContent = 'Enter trim size and page count to preview the cover.';
+      }
+    }
   }
 
   root.addEventListener('input', calc);
@@ -135,9 +192,9 @@ function owUnit(u) { return u === 'mm' ? 'mm' : 'in'; }
 })();
 
 /* ============================================================
-   12d — AI BOOK-IDEA CHECKER (client-side first look)
+   12d, AI BOOK-IDEA CHECKER (client-side first look)
    ------------------------------------------------------------
-   A helpful, modest read — genre signal + recommended OW lane.
+   A helpful, modest read, genre signal + recommended OW lane.
    Not a guarantee. Can later be upgraded to a live LLM call via
    a Netlify Function without changing this page's markup.
    ============================================================ */
@@ -187,7 +244,7 @@ const OW_IDEA = {
     e.preventDefault();
     const text = desc.value.trim();
     if (text.length < OW_IDEA.minChars) {
-      errEl.textContent = 'Please add a little more — at least ' + OW_IDEA.minChars + ' characters so the read is meaningful.';
+      errEl.textContent = 'Please add a little more, at least ' + OW_IDEA.minChars + ' characters so the read is meaningful.';
       errEl.style.display = 'block';
       return;
     }
@@ -199,7 +256,7 @@ const OW_IDEA = {
       ? 'From your description, this reads like <b>' + a.genre + '</b>.'
       : 'Your idea is <b>' + a.genre + '</b> — which just means it’s worth a proper conversation.';
     const marketLine = a.matched
-      ? 'That’s a category with a real, reachable readership — the key is producing it to a professional standard and getting it in front of the right readers.'
+      ? 'That’s a category with a real, reachable readership, the key is producing it to a professional standard and getting it in front of the right readers.'
       : 'The best next step is a quick chat so we can place it and map the right path.';
     const linksHTML = p.links.map(function (l) { return '<a class="btn btn-outline-ink" href="' + l[1] + '">' + l[0] + ' <span class="arrow">→</span></a>'; }).join(' ');
 
@@ -210,20 +267,20 @@ const OW_IDEA = {
       '<p>' + marketLine + '</p>' +
       '<p class="idea-rec">' + p.rec + '</p>' +
       '<div class="idea-links">' + linksHTML + '</div>' +
-      '<p class="idea-modest">This is a helpful first look, not a guarantee — every book deserves a real conversation. <a href="https://book.olamilekanwaliu.com">Book a consultation →</a></p>';
+      '<p class="idea-modest">This is a helpful first look, not a guarantee, every book deserves a real conversation. <a href="https://book.olamilekanwaliu.com">Book a consultation →</a></p>';
     resEl.classList.add('show');
     resEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
     // Send the idea to OW as a lead (fire-and-forget)
     const data = new FormData(form);
-    data.append('_subject', 'AI Book-Idea Checker — new idea submitted');
+    data.append('_subject', 'AI Book-Idea Checker, new idea submitted');
     data.append('Detected', a.genre + ' · suggested path: ' + a.path);
     try { fetch(OW_IDEA.formspree, { method: 'POST', body: data, headers: { Accept: 'application/json' } }); } catch (err) { /* noop */ }
   });
 })();
 
 /* ============================================================
-   12c — INTERIOR LAYOUT CALCULATOR
+   12c, INTERIOR LAYOUT CALCULATOR
    ============================================================ */
 (function () {
   const root = document.getElementById('interiorCalc');
@@ -269,7 +326,7 @@ const OW_IDEA = {
 
     const flag = el('inFlag');
     if (!pg) { flag.className = 'calc-flag'; flag.textContent = ''; }
-    else { flag.className = 'calc-flag ok'; flag.textContent = '✓ The gutter grows with page count — at ' + pg + ' pages we use ' + inside + ' in inside margin so text near the spine stays readable.'; }
+    else { flag.className = 'calc-flag ok'; flag.textContent = '✓ The gutter grows with page count, at ' + pg + ' pages we use ' + inside + ' in inside margin so text near the spine stays readable.'; }
 
     const hid = document.getElementById('inHidden');
     if (hid) hid.value = 'Trim ' + t.w + '×' + t.h + 'in · ' + pg + ' pages · ' + (fullbleed.checked ? 'full-bleed' : 'text-only') +
@@ -287,7 +344,7 @@ const OW_IDEA = {
     const book = el('spBook'), txt = el('spText'), cap = el('spCaption');
     if (book && cap) {
       if (t.w && t.h) {
-        const S = 26; // px per inch — keeps even an 8.5×11 book small & portable
+        const S = 26; // px per inch, keeps even an 8.5×11 book small & portable
         book.style.display = 'block';
         book.style.width = (t.w * S) + 'px';
         book.style.height = (t.h * S) + 'px';
@@ -297,7 +354,7 @@ const OW_IDEA = {
         txt.style.left = (inside * S) + 'px';    // spine side = inside/gutter margin
         txt.style.right = (outside * S) + 'px';
         cap.innerHTML = t.w + ' × ' + t.h + ' in' +
-          '<small>Shown to scale — every trim at the same scale to compare' +
+          '<small>Shown to scale, every trim at the same scale to compare' +
           (bleed ? ' · plus ' + C.bleedIn + ' in bleed' : '') + '</small>';
       } else {
         book.style.display = 'none';
