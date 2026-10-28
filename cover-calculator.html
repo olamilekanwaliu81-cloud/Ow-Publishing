@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=43">
+  <link rel="stylesheet" href="css/styles.css?v=61">
 </head>
 <body>
 
@@ -20,19 +20,48 @@
           <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram">
           <span class="brand-name">OW Publishing House</span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="self-publishing.html">Self-Publishing</a></li>
-          <li><a href="agent-route.html">The Agent Route</a></li>
-          <li><a href="local-print.html">Local Print</a></li>
+        <ul class="nav-links" id="navLinks">
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Publishing <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub">
+              <a href="self-publishing.html">Self-Publishing</a>
+              <a href="agent-route.html">Traditional Publishing</a>
+            </div>
+          </li>
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub cols">
+              <a href="book-editing.html">Book Editing</a>
+              <a href="book-proofreading-beta-reading.html">Proofreading &amp; Beta Read</a>
+              <a href="book-layout-typesetting.html">Layout &amp; Typesetting</a>
+              <a href="book-formatting.html">Book Formatting</a>
+              <a href="ebook-conversion.html">eBook Conversion</a>
+              <a href="isbn-setup.html">ISBN Setup</a>
+              <a href="book-cover-design.html">Book Cover Design</a>
+              <a href="book-publishing.html">Book Publishing</a>
+              <a href="book-launch-marketing.html">Launch &amp; Marketing</a>
+            </div>
+          </li>
           <li><a href="published-books.html">Published Books</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation →</a></li>
+          <li><a href="local-print.html">Local Print</a></li>
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Resources <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub">
+              <a href="cover-calculator.html">Cover Calculator</a>
+              <a href="interior-calculator.html">Interior / Trim Calculator</a>
+              <a href="book-idea-checker.html">AI Book-Idea Checker</a>
+              <a href="resources.html">Blog &amp; Guides</a>
+              <a href="about.html">About OW</a>
+            </div>
+          </li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation &rarr;</a></li>
         </ul>
         <div class="nav-cta">
           <a class="btn btn-gold" href="consultation.html">Book a Consultation</a>
-          <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </nav>
     </div>
@@ -51,93 +80,123 @@
 
     <section class="section platforms">
       <div class="wrap">
-        <div id="coverCalc" class="calc">
+        <div id="coverCalc" class="cc-wrap">
 
-          <div class="calc-left">
-          <!-- INPUTS -->
-          <div class="calc-inputs">
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-              <h3>Your book</h3>
-              <div class="unit-toggle" role="group" aria-label="Units">
+          <!-- SPECS -->
+          <div class="cc-card cc-specs">
+            <h2 class="cc-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 3.5 6 6M3 21l2.5-.5L20.5 5.5a2.1 2.1 0 0 0-3-3L2.5 17.5 2 20Z"/></svg>Cover specifications</h2>
+
+            <div class="cc-seg" id="ccMode" role="group" aria-label="Size mode">
+              <button type="button" data-mode="preset" class="active">Standard presets</button>
+              <button type="button" data-mode="custom">Custom size</button>
+            </div>
+
+            <div class="cc-field">
+              <label>Platform</label>
+              <div class="cc-seg cc-seg-3" id="ccPlatform" role="group" aria-label="Platform">
+                <button type="button" data-plat="kdp" class="active">Amazon KDP</button>
+                <button type="button" data-plat="ingram">IngramSpark</button>
+                <button type="button" data-plat="lulu">Lulu</button>
+              </div>
+            </div>
+
+            <div class="cc-field" id="ccTrimField">
+              <label for="ccTrim">Trim size</label>
+              <select id="ccTrim"></select>
+              <p class="cc-hint" id="ccTrimHint"></p>
+            </div>
+
+            <div class="cc-field" id="ccCustom" hidden>
+              <label>Custom trim size</label>
+              <div class="cc-2col">
+                <div><label for="ccW">Width (in)</label><input id="ccW" type="number" min="1" step="0.01" value="6"></div>
+                <div><label for="ccH">Height (in)</label><input id="ccH" type="number" min="1" step="0.01" value="9"></div>
+              </div>
+            </div>
+
+            <div class="cc-field">
+              <label for="ccPages">Page count</label>
+              <input id="ccPages" type="number" min="1" inputmode="numeric" value="250">
+              <p class="cc-hint" id="ccPagesHint"></p>
+            </div>
+
+            <div class="cc-field">
+              <label>Paper type</label>
+              <div class="cc-cards" id="ccPaper" role="group" aria-label="Paper type">
+                <button type="button" data-paper="white" class="active"><b>White</b><span>0.002252&quot;/page</span></button>
+                <button type="button" data-paper="cream"><b>Cream</b><span>0.0025&quot;/page</span></button>
+                <button type="button" data-paper="scolor"><b>Standard colour</b><span>0.0032&quot;/page · approx.</span></button>
+                <button type="button" data-paper="pcolor"><b>Premium colour</b><span>0.002347&quot;/page</span></button>
+              </div>
+            </div>
+
+            <div class="cc-field">
+              <label>Cover type</label>
+              <div class="cc-cards" id="ccCover" role="group" aria-label="Cover type">
+                <button type="button" data-cover="paperback" class="active"><b>Paperback</b><span>Perfect-bound softcover</span></button>
+                <button type="button" data-cover="hardcover"><b>Hardcover case</b><span>Printed on rigid board</span></button>
+                <button type="button" data-cover="dustjacket"><b>Dust jacket</b><span>Printed jacket with flaps</span></button>
+                <button type="button" data-cover="frenchflaps"><b>French flaps</b><span>Softcover with folding flaps</span></button>
+              </div>
+            </div>
+
+            <div class="cc-field">
+              <label for="ccIsbn">ISBN barcode <span class="cc-opt">(optional)</span></label>
+              <input id="ccIsbn" type="text" placeholder="978-1-83556-308-3">
+              <p class="cc-hint">Leave blank for a placeholder barcode area on the back cover.</p>
+            </div>
+
+            <div class="cc-unit">
+              <span>Units</span>
+              <div class="cc-seg cc-seg-sm" id="ccUnit" role="group" aria-label="Units">
                 <button type="button" data-unit="in" class="active">Inches</button>
                 <button type="button" data-unit="mm">mm</button>
               </div>
             </div>
-            <div class="form-grid">
-              <div class="field">
-                <label for="cvBinding">Binding</label>
-                <select id="cvBinding"><option value="paperback">Paperback</option><option value="hardcover">Hardcover</option></select>
-              </div>
-              <div class="field">
-                <label for="cvCoverType">Cover type</label>
-                <select id="cvCoverType"><option value="standard">Standard (paperback)</option><option value="casewrap">Case wrap (hardcover)</option><option value="dustjacket">Dust jacket (hardcover)</option></select>
-              </div>
-              <div class="field">
-                <label for="cvInterior">Interior</label>
-                <select id="cvInterior"><option value="bw">Black &amp; white</option><option value="standard">Standard colour</option><option value="premium">Premium colour</option></select>
-              </div>
-              <div class="field">
-                <label for="cvPaper">Paper</label>
-                <select id="cvPaper"><option value="white">White</option><option value="cream">Cream</option><option value="groundwood">Groundwood</option></select>
-              </div>
-              <div class="field">
-                <label for="cvTrim">Trim size</label>
-                <select id="cvTrim"></select>
-              </div>
-              <div class="field">
-                <label for="cvPages">Page count</label>
-                <input id="cvPages" type="number" min="1" inputmode="numeric" placeholder="e.g. 240" value="240">
-              </div>
-              <div class="field" id="cvCustom" style="display:none;">
-                <label for="cvW">Custom width (in)</label>
-                <input id="cvW" type="number" min="1" step="0.01" placeholder="6">
-              </div>
-              <div class="field" id="cvCustomH" style="display:none;">
-                <label for="cvH">Custom height (in)</label>
-                <input id="cvH" type="number" min="1" step="0.01" placeholder="9">
-              </div>
-            </div>
           </div>
-
-          <!-- Full-wrap preview (sits under the inputs) -->
-          <div class="size-preview">
-            <p class="sp-head">See the full wrap to scale <span>Back cover + spine + front cover, with bleed, the whole canvas you design on. The gold strip is the spine.</span></p>
-            <div class="sp-stage">
-              <div class="sp-wrap" id="cvWrap">
-                <div class="sp-trim" id="cvTrimBox">
-                  <div class="sp-face" id="cvBack"><span class="sp-safe"></span><span class="sp-barcode"></span><span class="sp-flabel">Back</span></div>
-                  <div class="sp-hinge" id="cvHingeL"></div>
-                  <div class="sp-spine2" id="cvSpineBox"></div>
-                  <div class="sp-hinge" id="cvHingeR"></div>
-                  <div class="sp-face" id="cvFront"><span class="sp-safe"></span><span class="sp-flabel">Front</span></div>
-                </div>
-                <span class="cbadge b1">1</span>
-                <span class="cbadge b2">2</span>
-                <span class="cbadge b3">3</span>
-                <span class="cbadge b4">4</span>
-                <span class="cbadge b5">5</span>
-                <span class="cbadge b6" id="cvBadge6" style="display:none;">6</span>
-                <span class="cbadge b7" id="cvBadge7" style="display:none;">7</span>
-              </div>
-            </div>
-            <p class="sp-caption" id="cvCaption">Enter trim size and page count to preview the cover.</p>
-          </div>
-          </div><!-- /calc-left -->
 
           <!-- RESULTS -->
-          <div class="calc-results">
-            <p class="eyebrow">Your cover dimensions</p>
-            <h3 style="margin-bottom:6px;">Every measurement, numbered</h3>
-            <p style="color:var(--on-navy-dim);font-size:.86rem;margin-bottom:6px;">Each number matches the diagram on the left.</p>
-            <table class="dim-table"><tbody id="cvDims"></tbody></table>
-            <p class="calc-summary" id="cvSummary">Enter your trim size and page count to see your exact canvas size.</p>
-            <p class="calc-flag" id="cvFlag"></p>
+          <div class="cc-results">
+
+            <div class="cc-spine-hero">
+              <span class="cc-spine-k">Spine width</span>
+              <div class="cc-spine-v"><strong id="ccSpineMain">—</strong> <span id="ccSpineUnit">inches</span></div>
+              <span class="cc-spine-sub" id="ccSpineAlt"></span>
+            </div>
+
+            <div class="cc-card">
+              <h3 class="cc-h3">Cover spread diagram</h3>
+              <div class="cc-diagram">
+                <div class="ccd-stage" id="ccStage"></div>
+              </div>
+              <div class="cc-legend">
+                <span><i class="sw-bleed"></i> Bleed — extend art to here</span>
+                <span><i class="sw-safe"></i> Safe area — keep text inside</span>
+                <span><i class="sw-spine"></i> Spine</span>
+              </div>
+              <p class="cc-note">Preview styled to match the printer's own cover template. OW removes these guide layers before your finished cover is submitted.</p>
+            </div>
+
+            <div class="cc-card">
+              <h3 class="cc-h3">Full cover dimensions</h3>
+              <div class="cc-dims" id="ccDims"></div>
+              <button type="button" class="cc-copyall" id="ccCopyAll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy all specs</button>
+            </div>
+
+            <div class="cc-card">
+              <h3 class="cc-h3">Quick reference — spine width by page count</h3>
+              <table class="cc-qref">
+                <thead><tr><th>Pages</th><th>White</th><th>Cream</th></tr></thead>
+                <tbody id="ccQref"></tbody>
+              </table>
+            </div>
+
           </div>
         </div>
 
-        <div class="guardrail">
+        <div class="guardrail" style="margin-top:26px;">
           <span aria-hidden="true">🛈</span>
-          <span><b>Which spec is this?</b> These figures use the <b>Amazon KDP</b> model, the anchor platform. Paper-thickness and bleed values differ slightly on IngramSpark and other printers, and hardcover case-wrap / dust-jacket covers need extra wrap allowance. OW always checks and adjusts final files before upload.</span>
+          <span><b>How accurate is this?</b> Spine width is <b>page count × paper thickness</b>; the full canvas adds bleed (and wrap + hinge for hardcover). Values follow the selected platform's published model, but printers round differently and hardcover case-wrap / dust-jacket covers need extra allowance. OW always verifies and adjusts final files before upload.</span>
         </div>
 
         <!-- SEND TO OW -->
@@ -247,7 +306,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=3"></script>
-  <script src="js/toolkit.js?v=3"></script>
+  <script src="js/main.js?v=9"></script>
+  <script src="js/toolkit.js?v=7"></script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://owpublishiing.com/sitemap.xml

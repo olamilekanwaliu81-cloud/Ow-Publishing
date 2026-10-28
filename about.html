@@ -3,13 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — A Real Specialist, Not a Faceless Mill | OW Publishing House</title>
-  <meta name="description" content="OW Publishing House is a lean, honest hybrid publishing house — 3+ years of book production, a KDP + IngramSpark workflow, and a founder who works with authors directly. We hold no stock; you keep everything.">
+  <title>About OW Publishing House | A Real Specialist, Not a Mill</title>
+  <meta name="description" content="Meet OW Publishing House: a lean, honest hybrid publisher with a KDP and IngramSpark workflow and a real team. We hold no stock and you keep 100% of your rights and royalties.">
+  <link rel="canonical" href="https://owpublishiing.com/about.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OW Publishing House">
+  <meta property="og:title" content="About OW Publishing House | A Real Specialist, Not a Mill">
+  <meta property="og:description" content="Meet OW Publishing House: a lean, honest hybrid publisher with a KDP and IngramSpark workflow and a real team. We hold no stock and you keep 100% of your rights and royalties.">
+  <meta property="og:url" content="https://owpublishiing.com/about.html">
+  <meta property="og:image" content="https://owpublishiing.com/assets/ow-logo-monogram.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="About OW Publishing House | A Real Specialist, Not a Mill">
+  <meta name="twitter:description" content="Meet OW Publishing House: a lean, honest hybrid publisher with a KDP and IngramSpark workflow and a real team. We hold no stock and you keep 100% of your rights and royalties.">
   <link rel="icon" href="assets/ow-logo-monogram.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=43">
+  <link rel="stylesheet" href="css/styles.css?v=61">
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Organization", "name": "OW Publishing House", "url": "https://owpublishiing.com/", "logo": "https://owpublishiing.com/assets/ow-logo-monogram.png", "description": "OW Publishing House is a hybrid publishing house that helps authors edit, design, publish and grow their books while keeping 100% of their rights and royalties.", "sameAs": ["https://www.linkedin.com/company/olamilekanwaliu/", "https://www.upwork.com/agencies/2075718404629570653/"], "contactPoint": {"@type": "ContactPoint", "telephone": "+234-904-253-4953", "contactType": "customer service", "email": "hello@owpublishiing.com", "areaServed": "Worldwide"}}
+  </script>
 </head>
 <body>
 
@@ -21,15 +34,42 @@
           <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram">
           <span class="brand-name">OW Publishing House</span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="self-publishing.html">Self-Publishing</a></li>
-          <li><a href="agent-route.html">The Agent Route</a></li>
-          <li><a href="local-print.html">Local Print</a></li>
+        <ul class="nav-links" id="navLinks">
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Publishing <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub">
+              <a href="self-publishing.html">Self-Publishing</a>
+              <a href="agent-route.html">Traditional Publishing</a>
+            </div>
+          </li>
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub cols">
+              <a href="book-editing.html">Book Editing</a>
+              <a href="book-proofreading-beta-reading.html">Proofreading &amp; Beta Read</a>
+              <a href="book-layout-typesetting.html">Layout &amp; Typesetting</a>
+              <a href="book-formatting.html">Book Formatting</a>
+              <a href="ebook-conversion.html">eBook Conversion</a>
+              <a href="isbn-setup.html">ISBN Setup</a>
+              <a href="book-cover-design.html">Book Cover Design</a>
+              <a href="book-publishing.html">Book Publishing</a>
+              <a href="book-launch-marketing.html">Launch &amp; Marketing</a>
+            </div>
+          </li>
           <li><a href="published-books.html">Published Books</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="about.html" aria-current="page">About</a></li>
-          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation →</a></li>
+          <li><a href="local-print.html">Local Print</a></li>
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Resources <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub">
+              <a href="cover-calculator.html">Cover Calculator</a>
+              <a href="interior-calculator.html">Interior / Trim Calculator</a>
+              <a href="book-idea-checker.html">AI Book-Idea Checker</a>
+              <a href="resources.html">Blog &amp; Guides</a>
+              <a href="about.html">About OW</a>
+            </div>
+          </li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation &rarr;</a></li>
         </ul>
         <div class="nav-cta">
           <a class="btn btn-gold" href="consultation.html">Book a Consultation</a>
@@ -56,13 +96,35 @@
             <a class="btn btn-ghost btn-lg" href="index.html#chooser">Find your path</a>
           </div>
         </div>
-        <div class="lane-hero-visual">
-          <div class="about-photo has-photo">
-            <img src="assets/founder-olamilekan.jpg" alt="Olamilekan Waliu Tajudeen, founder of OW Publishing House">
-            <div class="about-caption">
-              <div class="n">Olamilekan Waliu Tajudeen</div>
-              <div class="r">Founder · Book Design &amp; Publishing Specialist</div>
-            </div>
+        <div class="lane-hero-visual team-orbit-wrap" aria-label="The OW Publishing House team">
+          <div class="team-orbit">
+            <span class="orbit-ring r1" aria-hidden="true"></span>
+            <span class="orbit-ring r2" aria-hidden="true"></span>
+
+            <a class="orbit-node center" href="team-waliu-olamilekan.html" style="--x:50%;--y:47%;">
+              <span class="on-photo"><img src="assets/founder-olamilekan.jpg" alt="Waliu Olamilekan, Founder &amp; CEO"></span>
+              <span class="on-name">Waliu Olamilekan</span>
+            </a>
+            <a class="orbit-node" href="team-khodijah-ismail.html" style="--x:50%;--y:9%;">
+              <span class="on-photo tm-initials" data-tone="gold" aria-hidden="true">KI</span>
+              <span class="on-name">Khodijah Ismail</span>
+            </a>
+            <a class="orbit-node" href="team-fuard-sulaimon.html" style="--x:85%;--y:33%;">
+              <span class="on-photo tm-initials" data-tone="teal" aria-hidden="true">FS</span>
+              <span class="on-name">Fuard Sulaimon</span>
+            </a>
+            <a class="orbit-node" href="team-ayorinde-david.html" style="--x:72%;--y:80%;">
+              <span class="on-photo tm-initials" data-tone="plum" aria-hidden="true">AD</span>
+              <span class="on-name">Ayorinde David</span>
+            </a>
+            <a class="orbit-node" href="team-uthman-tijani.html" style="--x:28%;--y:80%;">
+              <span class="on-photo tm-initials" data-tone="navy" aria-hidden="true">UT</span>
+              <span class="on-name">Uthman Tijani</span>
+            </a>
+            <a class="orbit-node" href="team-fuard-olaide.html" style="--x:15%;--y:33%;">
+              <span class="on-photo tm-initials" data-tone="rust" aria-hidden="true">FO</span>
+              <span class="on-name">Fuard Olaide</span>
+            </a>
           </div>
         </div>
       </div>
@@ -79,6 +141,27 @@
           <p>OW started where most good things in publishing start, with the craft. Over <strong>3+ years</strong>, the work grew from formatting and cover design into something bigger: authors kept coming back not just for a beautiful book, but for help getting it published <em>and sold</em>. So the service grew to meet them.</p>
           <p>Today OW Publishing House is a hybrid house with three clear lanes, self-publishing production and growth, help reaching literary agents, and local print-and-ship, built on a proven, hands-on workflow across Amazon KDP and IngramSpark. The same top-rated communication standard used with clients on every project runs through all of it.</p>
           <p>What hasn't changed is the principle underneath: an author should end up owning everything, understanding everything, and never feeling like a number.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 2b. CLEAR COMPANY MODEL (§10) ===================== -->
+    <section class="section platforms">
+      <div class="wrap">
+        <div class="section-head center">
+          <p class="eyebrow">A clear company model</p>
+          <h2>Professional publishing, with you still in charge</h2>
+          <p class="lead">Use one service or connect several, production, publishing, growth, agent prep or local print. The specialists stay specialised; your book keeps one joined-up route from manuscript to market.</p>
+        </div>
+        <div class="model-grid">
+          <div class="model-card is">
+            <h3>What OW is</h3>
+            <p>A hybrid publishing house you hire to produce, publish and grow your book, across Amazon KDP, IngramSpark and the platforms that fit it. One accountable team, foreign and local, from first draft to real sales.</p>
+          </div>
+          <div class="model-card isnot">
+            <h3>What OW is not</h3>
+            <p>We are not a traditional acquiring publisher, and not a vanity press. We never take your rights, your royalties, your publishing accounts, or your copies. You stay in control the whole way.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -183,6 +266,58 @@
       </div>
     </section>
 
+    <!-- ===================== 6b. THE TEAM (§10) ===================== -->
+    <section class="section platforms" id="team">
+      <div class="wrap">
+        <div class="section-head center">
+          <p class="eyebrow">The people behind the work</p>
+          <h2>Meet the OW team</h2>
+          <p class="lead">A lean house of around ten specialists, editing, formatting, cover and interior design, advertising, web and author support, led by the six below. One book, one joined-up team, and you always know who you're talking to.</p>
+        </div>
+
+        <div class="team-grid">
+          <a class="tm-card" href="team-waliu-olamilekan.html">
+            <span class="tm-photo"><img src="assets/founder-olamilekan.jpg" alt="Portrait of Waliu Olamilekan, Founder &amp; CEO of OW Publishing House"></span>
+            <span class="tm-name">Waliu Olamilekan</span>
+            <span class="tm-role">Founder &amp; CEO</span>
+            <span class="tm-dept">Leadership</span>
+          </a>
+          <a class="tm-card" href="team-khodijah-ismail.html">
+            <span class="tm-photo tm-initials" data-tone="gold" aria-hidden="true">KI</span>
+            <span class="tm-name">Khodijah Ismail</span>
+            <span class="tm-role">Lead Book Formatter</span>
+            <span class="tm-dept">Production</span>
+          </a>
+          <a class="tm-card" href="team-fuard-sulaimon.html">
+            <span class="tm-photo tm-initials" data-tone="teal" aria-hidden="true">FS</span>
+            <span class="tm-name">Fuard Sulaimon</span>
+            <span class="tm-role">Advertising &amp; Media Strategist</span>
+            <span class="tm-dept">Marketing</span>
+          </a>
+          <a class="tm-card" href="team-ayorinde-david.html">
+            <span class="tm-photo tm-initials" data-tone="plum" aria-hidden="true">AD</span>
+            <span class="tm-name">Ayorinde David</span>
+            <span class="tm-role">Creative Personnel</span>
+            <span class="tm-dept">Creative</span>
+          </a>
+          <a class="tm-card" href="team-uthman-tijani.html">
+            <span class="tm-photo tm-initials" data-tone="navy" aria-hidden="true">UT</span>
+            <span class="tm-name">Uthman Tijani</span>
+            <span class="tm-role">Lead Book Editor</span>
+            <span class="tm-dept">Editorial</span>
+          </a>
+          <a class="tm-card" href="team-fuard-olaide.html">
+            <span class="tm-photo tm-initials" data-tone="rust" aria-hidden="true">FO</span>
+            <span class="tm-name">Fuard Olaide</span>
+            <span class="tm-role">Website Designer</span>
+            <span class="tm-dept">Technology</span>
+          </a>
+        </div>
+
+        <p class="team-note">…plus a wider team of formatters, designers and support specialists who keep every book moving from manuscript to market.</p>
+      </div>
+    </section>
+
     <!-- ===================== 7. CTA (§10) ===================== -->
     <section class="section cta-band">
       <div class="wrap">
@@ -249,6 +384,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=9"></script>
 </body>
 </html>
