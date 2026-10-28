@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Book-Idea Checker — A Free First Look | OW Publishing House</title>
-  <meta name="description" content="Describe your book idea and get a quick, encouraging first look — likely genre, a market read, and the OW path that fits. A helpful first look, not a guarantee.">
+  <title>AI Book Assistant — Free Book Idea Report | OW Publishing House</title>
+  <meta name="description" content="Chat with OW's AI book assistant: answer a few quick questions and get a free Book Idea Report — likely genre, an honest market read, and the publishing path that fits your book.">
   <link rel="icon" href="assets/ow-logo-monogram.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=43">
+  <link rel="stylesheet" href="css/styles.css?v=60">
 </head>
 <body>
 
@@ -20,19 +20,48 @@
           <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram">
           <span class="brand-name">OW Publishing House</span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="self-publishing.html">Self-Publishing</a></li>
-          <li><a href="agent-route.html">The Agent Route</a></li>
-          <li><a href="local-print.html">Local Print</a></li>
+        <ul class="nav-links" id="navLinks">
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Publishing <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub">
+              <a href="self-publishing.html">Self-Publishing</a>
+              <a href="agent-route.html">Traditional Publishing</a>
+            </div>
+          </li>
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub cols">
+              <a href="book-editing.html">Book Editing</a>
+              <a href="book-proofreading-beta-reading.html">Proofreading &amp; Beta Read</a>
+              <a href="book-layout-typesetting.html">Layout &amp; Typesetting</a>
+              <a href="book-formatting.html">Book Formatting</a>
+              <a href="ebook-conversion.html">eBook Conversion</a>
+              <a href="isbn-setup.html">ISBN Setup</a>
+              <a href="book-cover-design.html">Book Cover Design</a>
+              <a href="book-publishing.html">Book Publishing</a>
+              <a href="book-launch-marketing.html">Launch &amp; Marketing</a>
+            </div>
+          </li>
           <li><a href="published-books.html">Published Books</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation →</a></li>
+          <li><a href="local-print.html">Local Print</a></li>
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Resources <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub">
+              <a href="cover-calculator.html">Cover Calculator</a>
+              <a href="interior-calculator.html">Interior / Trim Calculator</a>
+              <a href="book-idea-checker.html">AI Book-Idea Checker</a>
+              <a href="resources.html">Blog &amp; Guides</a>
+              <a href="about.html">About OW</a>
+            </div>
+          </li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation &rarr;</a></li>
         </ul>
         <div class="nav-cta">
           <a class="btn btn-gold" href="consultation.html">Book a Consultation</a>
-          <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </nav>
     </div>
@@ -42,40 +71,31 @@
 
     <section class="lane-hero">
       <div class="wrap gallery-header">
-        <p class="crumbs"><a href="index.html">Home</a><span class="sep">›</span><a href="self-publishing.html#toolkit">Author Toolkit</a><span class="sep">›</span>Book-Idea Checker</p>
-        <p class="eyebrow">Author Toolkit · Free tool</p>
-        <h1>Book-Idea Checker</h1>
-        <p class="lead">Tell us about your book in a few sentences and get a quick, honest first look, the likely genre, a market read, and the path that fits. A helpful first look, never a guarantee.</p>
+        <p class="crumbs"><a href="index.html">Home</a><span class="sep">›</span>Resources<span class="sep">›</span>AI Book Assistant</p>
+        <p class="eyebrow">AI Book Assistant · Free</p>
+        <h1>Chat with OW&rsquo;s book assistant</h1>
+        <p class="lead">Answer a few quick questions and get a free Book Idea Report in about two minutes, your likely genre, an honest market read, and the exact OW path that fits your book.</p>
       </div>
     </section>
 
     <section class="section platforms">
-      <div class="wrap" style="max-width:760px;">
-        <div id="ideaChecker">
-          <form class="form-card" id="ideaForm">
-            <div class="form-grid">
-              <div class="field full">
-                <label for="ideaDesc">Describe your book <span class="req">*</span></label>
-                <textarea id="ideaDesc" name="Book idea" placeholder="What's it about, who's it for, and where are you with it? A few honest sentences is perfect." style="min-height:130px;" required></textarea>
-                <span class="hint">The more you tell us, the better the read, aim for a couple of sentences.</span>
-                <span class="idea-error" id="ideaError"></span>
-              </div>
-              <div class="field"><label for="ideaName">Name <span class="req">*</span></label><input id="ideaName" name="Name" type="text" required></div>
-              <div class="field"><label for="ideaEmail">Email <span class="req">*</span></label><input id="ideaEmail" name="Email" type="email" required></div>
-              <div class="field full"><label for="ideaWhats">WhatsApp <span class="req">*</span></label><input id="ideaWhats" name="WhatsApp" type="tel" placeholder="+234 …" required></div>
+      <div class="wrap" style="max-width:720px;">
+        <div class="chat" id="ideaChat">
+          <div class="chat-head">
+            <span class="chat-avatar" aria-hidden="true">OW</span>
+            <div class="chat-id">
+              <b>Ola · OW Book Assistant</b>
+              <span>Free Book Idea Report in ~2 minutes</span>
             </div>
-            <div class="form-actions">
-              <button class="btn btn-gold btn-lg" type="submit">Check my idea <span class="arrow">→</span></button>
-              <p class="form-privacy">We use your details only to send your read and follow up if you'd like.</p>
-            </div>
-          </form>
-
-          <div class="idea-result" id="ideaResult" role="status" aria-live="polite"></div>
+            <span class="chat-dot" aria-hidden="true"></span>
+          </div>
+          <div class="chat-log" id="chatLog" role="log" aria-live="polite"></div>
+          <div class="chat-input" id="chatInput"></div>
         </div>
 
         <div class="guardrail" style="margin-top:26px;">
           <span aria-hidden="true">🛈</span>
-          <span><b>How this works:</b> this is an instant, encouraging first look based on your description, a starting point, not a verdict on your book's worth. The real read comes from a proper conversation, where nothing is over-promised.</span>
+          <span><b>How this works:</b> Ola gives an instant, encouraging first look from what you share, a starting point, not a verdict on your book&rsquo;s worth. The real read comes from a proper conversation with the OW team, where nothing is over-promised.</span>
         </div>
       </div>
     </section>
@@ -136,7 +156,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=3"></script>
-  <script src="js/toolkit.js?v=3"></script>
+  <script src="js/main.js?v=9"></script>
+  <script src="js/toolkit.js?v=7"></script>
 </body>
 </html>

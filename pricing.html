@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=43">
+  <link rel="stylesheet" href="css/styles.css?v=60">
 </head>
 <body>
 
@@ -21,15 +21,42 @@
           <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram">
           <span class="brand-name">OW Publishing House</span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="self-publishing.html">Self-Publishing</a></li>
-          <li><a href="agent-route.html">The Agent Route</a></li>
-          <li><a href="local-print.html">Local Print</a></li>
+        <ul class="nav-links" id="navLinks">
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Publishing <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub">
+              <a href="self-publishing.html">Self-Publishing</a>
+              <a href="agent-route.html">Traditional Publishing</a>
+            </div>
+          </li>
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub cols">
+              <a href="book-editing.html">Book Editing</a>
+              <a href="book-proofreading-beta-reading.html">Proofreading &amp; Beta Read</a>
+              <a href="book-layout-typesetting.html">Layout &amp; Typesetting</a>
+              <a href="book-formatting.html">Book Formatting</a>
+              <a href="ebook-conversion.html">eBook Conversion</a>
+              <a href="isbn-setup.html">ISBN Setup</a>
+              <a href="book-cover-design.html">Book Cover Design</a>
+              <a href="book-publishing.html">Book Publishing</a>
+              <a href="book-launch-marketing.html">Launch &amp; Marketing</a>
+            </div>
+          </li>
           <li><a href="published-books.html">Published Books</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation →</a></li>
+          <li><a href="local-print.html">Local Print</a></li>
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Resources <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub">
+              <a href="cover-calculator.html">Cover Calculator</a>
+              <a href="interior-calculator.html">Interior / Trim Calculator</a>
+              <a href="book-idea-checker.html">AI Book-Idea Checker</a>
+              <a href="resources.html">Blog &amp; Guides</a>
+              <a href="about.html">About OW</a>
+            </div>
+          </li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation &rarr;</a></li>
         </ul>
         <div class="nav-cta">
           <a class="btn btn-gold" href="consultation.html">Book a Consultation</a>
@@ -53,58 +80,129 @@
       </div>
     </section>
 
-    <!-- ===================== PRODUCTION (§7) ===================== -->
+    <!-- ===================== PUBLISHING PACKAGES (§7) ===================== -->
     <section class="section" id="production">
       <div class="wrap">
         <div class="section-head center">
-          <p class="eyebrow">Self-Publishing · one-time</p>
-          <h2>Production packages</h2>
-          <p class="lead">Get your book produced properly and published on the right platforms, a clear project with a clear finish line.</p>
+          <p class="eyebrow">Self-Publishing · one-time, all-inclusive</p>
+          <h2>Publishing packages &amp; pricing</h2>
+          <p class="lead">Choose the package that fits your book and budget. Every tier ends with you owning <b>100% of your rights, royalties and copies</b>.</p>
         </div>
-        <div class="price-note" data-placeholder="prices"><b>Prices to be finalised.</b> Figures show as ••• until locked, final "from" pricing will replace them. Every package ends with you owning 100% of your rights and copies.</div>
 
-        <div class="tier-grid three">
-          <div class="tier">
-            <span class="tier-tag">Essentials</span>
-            <span class="tier-name">Get published</span>
-            <p class="tier-price" data-placeholder="price"><span class="amt">From •••</span></p>
-            <ul class="feature-list">
-              <li>Interior formatting (print &amp; ebook)</li>
-              <li>Cover design, front cover</li>
-              <li>Metadata (BISAC / Thema, keywords)</li>
-              <li>Publishing setup on core platforms</li>
-              <li>You keep 100% of rights &amp; royalties</li>
-            </ul>
-            <a class="btn btn-outline-ink" href="consultation.html">Book a consultation</a>
-          </div>
+        <div class="price-note"><b>Prices are set in USD.</b> Use the switcher to see an approximate amount in ₦, C$, € or £ — you're billed in USD, and OW covers the currency-difference charge. Every package leaves you owning 100% of your rights and copies.</div>
 
-          <div class="tier featured">
-            <span class="popular">Most popular</span>
-            <span class="tier-tag">Complete</span>
-            <span class="tier-name">Published &amp; polished</span>
-            <p class="tier-price" data-placeholder="price"><span class="amt">From •••</span></p>
-            <ul class="feature-list">
-              <li>Everything in Essentials</li>
-              <li>Full-wrap cover, front, spine &amp; back</li>
-              <li>In-house proofreading</li>
-              <li>Wider platform mix (KDP + IngramSpark &amp; more)</li>
-              <li>Illustration coordination (if needed)</li>
-            </ul>
-            <a class="btn btn-gold" href="consultation.html">Book a consultation</a>
-          </div>
+        <!-- currency switcher -->
+        <div class="cur-switch" id="curSwitch" role="group" aria-label="Choose currency">
+          <button type="button" data-cur="USD" class="active">$ USD</button>
+          <button type="button" data-cur="NGN">₦ NGN</button>
+          <button type="button" data-cur="CAD">C$ CAD</button>
+          <button type="button" data-cur="EUR">€ EUR</button>
+          <button type="button" data-cur="GBP">£ GBP</button>
+        </div>
+        <p class="cur-note" id="curNote"></p>
 
-          <div class="tier">
-            <span class="tier-tag">Premium</span>
-            <span class="tier-name">The complete house</span>
-            <p class="tier-price" data-placeholder="price"><span class="amt">From •••</span></p>
-            <ul class="feature-list">
-              <li>Everything in Complete</li>
-              <li>Editing coordinated (copy / line &amp; developmental)</li>
-              <li>Full platform mix, matched to your book</li>
-              <li>Priority production &amp; hands-on guidance</li>
-              <li>Ready to add the Book Growth retainer</li>
-            </ul>
-            <a class="btn btn-outline-ink" href="consultation.html">Book a consultation</a>
+        <div class="pkg-grid" id="pricingPkgs">
+
+          <!-- ESSENTIALS -->
+          <article class="pkg-card">
+            <span class="pkg-tag">Essentials</span>
+            <p class="pkg-best">Best for a finished, edited manuscript</p>
+            <p class="pkg-price"><span class="amt" data-usd="350">—</span><span class="pkg-per">one-time</span></p>
+            <span class="pkg-royalty">100% royalty &amp; rights to you</span>
+            <a class="btn btn-outline-ink pkg-cta" href="consultation.html">Get started</a>
+            <div class="pkg-rows">
+              <div class="pkg-row"><span class="pr-k">Editing</span><span class="pr-v none">Not included</span></div>
+              <div class="pkg-row"><span class="pr-k">Cover</span><span class="pr-v">Front-cover design</span></div>
+              <div class="pkg-row"><span class="pr-k">Interior</span><span class="pr-v">Ebook formatting</span></div>
+              <div class="pkg-row"><span class="pr-k">Formats</span><span class="pr-v">Ebook only</span></div>
+              <div class="pkg-row"><span class="pr-k">ISBN</span><span class="pr-v">ISBN setup &amp; guidance</span></div>
+              <div class="pkg-row"><span class="pr-k">Printed copies</span><span class="pr-v none">Not included</span></div>
+              <div class="pkg-row"><span class="pr-k">Distribution</span><span class="pr-v">Publishing setup + distribution — Amazon KDP &amp; IngramSpark only</span></div>
+              <div class="pkg-row"><span class="pr-k">Marketing</span><span class="pr-v none">Not included</span></div>
+            </div>
+          </article>
+
+          <!-- COMPLETE -->
+          <article class="pkg-card">
+            <span class="pkg-tag">Complete</span>
+            <p class="pkg-best">Best for a polished, professional release</p>
+            <p class="pkg-price"><span class="amt" data-usd="750">—</span><span class="pkg-per">one-time</span></p>
+            <span class="pkg-royalty">100% royalty &amp; rights to you</span>
+            <a class="btn btn-outline-ink pkg-cta" href="consultation.html">Get started</a>
+            <div class="pkg-rows">
+              <div class="pkg-row"><span class="pr-k">Editing</span><span class="pr-v">Proofreading</span></div>
+              <div class="pkg-row"><span class="pr-k">Cover</span><span class="pr-v">Full-wrap cover (front, spine &amp; back)</span></div>
+              <div class="pkg-row"><span class="pr-k">Interior</span><span class="pr-v">Print &amp; ebook formatting</span></div>
+              <div class="pkg-row"><span class="pr-k">Formats</span><span class="pr-v">Paperback + ebook</span></div>
+              <div class="pkg-row"><span class="pr-k">ISBN</span><span class="pr-v">ISBN + barcode</span></div>
+              <div class="pkg-row"><span class="pr-k">Printed copies</span><span class="pr-v">Author copies included</span></div>
+              <div class="pkg-row"><span class="pr-k">Distribution</span><span class="pr-v">Wider platform mix + ebook distribution</span></div>
+              <div class="pkg-row"><span class="pr-k">Marketing</span><span class="pr-v">Launch basics: listing &amp; metadata optimisation</span></div>
+            </div>
+          </article>
+
+          <!-- GROWTH (most popular) -->
+          <article class="pkg-card featured">
+            <span class="pkg-popular">Most popular</span>
+            <span class="pkg-tag">Growth</span>
+            <p class="pkg-best">Best for authors who want real sales</p>
+            <p class="pkg-price"><span class="amt" data-usd="1500">—</span><span class="pkg-per">one-time</span></p>
+            <span class="pkg-royalty">100% royalty &amp; rights to you</span>
+            <a class="btn btn-gold pkg-cta" href="consultation.html">Get started</a>
+            <div class="pkg-rows">
+              <div class="pkg-row"><span class="pr-k">Editing</span><span class="pr-v">Copyediting + proofreading</span></div>
+              <div class="pkg-row"><span class="pr-k">Cover</span><span class="pr-v">Deluxe full-wrap cover</span></div>
+              <div class="pkg-row"><span class="pr-k">Interior</span><span class="pr-v">Print &amp; ebook formatting</span></div>
+              <div class="pkg-row"><span class="pr-k">Formats</span><span class="pr-v">Paperback + ebook</span></div>
+              <div class="pkg-row"><span class="pr-k">ISBN</span><span class="pr-v">ISBN + barcode</span></div>
+              <div class="pkg-row"><span class="pr-k">Printed copies</span><span class="pr-v">Author copies included</span></div>
+              <div class="pkg-row"><span class="pr-k">Distribution</span><span class="pr-v">Full platform mix, matched to your book</span></div>
+              <div class="pkg-row"><span class="pr-k">Marketing</span><span class="pr-v">Book Growth kickstart: Amazon Ads setup, keyword SEO &amp; a monthly report</span></div>
+            </div>
+          </article>
+
+          <!-- BESTSELLER -->
+          <article class="pkg-card">
+            <span class="pkg-tag">Bestseller</span>
+            <p class="pkg-best">Best for a full-service launch</p>
+            <p class="pkg-price"><span class="amt" data-usd="3000">—</span><span class="pkg-per">one-time</span></p>
+            <span class="pkg-royalty">100% royalty &amp; rights to you</span>
+            <a class="btn btn-outline-ink pkg-cta" href="consultation.html">Get started</a>
+            <div class="pkg-rows">
+              <div class="pkg-row"><span class="pr-k">Editing</span><span class="pr-v">Developmental + line + copyedit</span></div>
+              <div class="pkg-row"><span class="pr-k">Cover</span><span class="pr-v">Deluxe cover + premium interior</span></div>
+              <div class="pkg-row"><span class="pr-k">Interior</span><span class="pr-v">Print &amp; ebook formatting + indexing</span></div>
+              <div class="pkg-row"><span class="pr-k">Formats</span><span class="pr-v">Paperback + hardcover + ebook</span></div>
+              <div class="pkg-row"><span class="pr-k">ISBN</span><span class="pr-v">ISBN + barcode</span></div>
+              <div class="pkg-row"><span class="pr-k">Printed copies</span><span class="pr-v">Larger print run included</span></div>
+              <div class="pkg-row"><span class="pr-k">Distribution</span><span class="pr-v">Full global distribution to retailers</span></div>
+              <div class="pkg-row"><span class="pr-k">Marketing</span><span class="pr-v">Full Book Growth + author website + launch plan</span></div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- comparison table -->
+        <div class="cmp-wrap">
+          <h3 class="cmp-title">Compare every package</h3>
+          <div class="cmp-scroll">
+            <table class="cmp-table" id="cmpTable">
+              <thead>
+                <tr><th>Feature</th><th>Essentials</th><th>Complete</th><th class="hl">Growth</th><th>Bestseller</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Price (one-time)</td><td><b class="amt" data-usd="350">—</b></td><td><b class="amt" data-usd="750">—</b></td><td class="hl"><b class="amt" data-usd="1500">—</b></td><td><b class="amt" data-usd="3000">—</b></td></tr>
+                <tr><td>Editing</td><td>—</td><td>Proofreading</td><td class="hl">Copyedit + proof</td><td>Dev + line + copy</td></tr>
+                <tr><td>Cover design</td><td>Front cover</td><td>Full-wrap</td><td class="hl">Deluxe full-wrap</td><td>Deluxe + premium interior</td></tr>
+                <tr><td>Interior formatting</td><td>Ebook only</td><td>✓</td><td class="hl">✓</td><td>✓ + indexing</td></tr>
+                <tr><td>Formats</td><td>Ebook only</td><td>PB + ebook</td><td class="hl">PB + ebook</td><td>PB + HC + ebook</td></tr>
+                <tr><td>ISBN</td><td>Setup</td><td>+ barcode</td><td class="hl">+ barcode</td><td>+ barcode</td></tr>
+                <tr><td>Printed copies</td><td>—</td><td>Author copies</td><td class="hl">Author copies</td><td>Larger run</td></tr>
+                <tr><td>Distribution</td><td>Amazon KDP &amp; IngramSpark</td><td>Wider mix + ebook</td><td class="hl">Full platform mix</td><td>Full global</td></tr>
+                <tr><td>Marketing / Book Growth</td><td>—</td><td>Launch basics</td><td class="hl">Growth kickstart</td><td>Full Growth + website + launch</td></tr>
+                <tr><td>Your rights &amp; royalties</td><td>100%</td><td>100%</td><td class="hl">100%</td><td>100%</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -363,6 +461,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=9"></script>
 </body>
 </html>

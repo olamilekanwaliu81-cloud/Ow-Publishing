@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=43">
+  <link rel="stylesheet" href="css/styles.css?v=60">
 </head>
 <body>
 
@@ -21,15 +21,42 @@
           <img src="assets/ow-logo-monogram.png" alt="OW Publishing House monogram">
           <span class="brand-name">OW Publishing House</span>
         </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="self-publishing.html">Self-Publishing</a></li>
-          <li><a href="agent-route.html">The Agent Route</a></li>
-          <li><a href="local-print.html">Local Print</a></li>
+        <ul class="nav-links" id="navLinks">
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Publishing <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub">
+              <a href="self-publishing.html">Self-Publishing</a>
+              <a href="agent-route.html">Traditional Publishing</a>
+            </div>
+          </li>
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Services <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub cols">
+              <a href="book-editing.html">Book Editing</a>
+              <a href="book-proofreading-beta-reading.html">Proofreading &amp; Beta Read</a>
+              <a href="book-layout-typesetting.html">Layout &amp; Typesetting</a>
+              <a href="book-formatting.html">Book Formatting</a>
+              <a href="ebook-conversion.html">eBook Conversion</a>
+              <a href="isbn-setup.html">ISBN Setup</a>
+              <a href="book-cover-design.html">Book Cover Design</a>
+              <a href="book-publishing.html">Book Publishing</a>
+              <a href="book-launch-marketing.html">Launch &amp; Marketing</a>
+            </div>
+          </li>
           <li><a href="published-books.html">Published Books</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation →</a></li>
+          <li><a href="local-print.html">Local Print</a></li>
+          <li class="has-sub">
+            <button type="button" class="nav-top" aria-expanded="false" aria-haspopup="true">Resources <span class="caret" aria-hidden="true"></span></button>
+            <div class="sub">
+              <a href="cover-calculator.html">Cover Calculator</a>
+              <a href="interior-calculator.html">Interior / Trim Calculator</a>
+              <a href="book-idea-checker.html">AI Book-Idea Checker</a>
+              <a href="resources.html">Blog &amp; Guides</a>
+              <a href="about.html">About OW</a>
+            </div>
+          </li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li class="nav-cta-mobile"><a href="consultation.html">Book a Consultation &rarr;</a></li>
         </ul>
         <div class="nav-cta">
           <a class="btn btn-gold" href="consultation.html">Book a Consultation</a>
@@ -65,10 +92,12 @@
         <!-- Right visual: real published-cover collage -->
         <div class="hero-visual" aria-hidden="true">
           <div class="cover-collage">
-            <div class="cover c1 has-img"><img src="assets/book-soul-sneakers.jpg" alt=""></div>
-            <div class="cover c2 has-img"><img src="assets/book-therapy-selflove.jpg" alt=""></div>
-            <div class="cover c3 has-img"><img src="assets/book-anxious-confident.jpg" alt=""></div>
-            <div class="cover c4 has-img"><img src="assets/book-foundations.jpg" alt=""></div>
+            <div class="cover c1 has-img"><img src="assets/proof-therapy.jpg" alt="Author Paula Axelrod holding her published book, Therapy Changed My Suicidal Thoughts to Self-Love"></div>
+            <div class="cover c2 has-img"><img src="assets/proof-comeforth.jpg" alt="Author Alejandro Del Toro holding his published book, Come Forth: Hence the Day"></div>
+            <div class="cover c3 has-img"><img src="assets/proof-earths.jpg" alt="Author holding Earths Hidden Treasures by Pure Crystal Co."></div>
+            <div class="cover c4 has-img"><img src="assets/proof-authentic.jpg" alt="Author Baron Von Kaiser holding his published book, The Authentic Connection"></div>
+            <div class="cover c5 has-img"><img src="assets/proof-foundations.jpg" alt="Foundations: Heaven's Blueprint for Kingdom Builders by Joseph Bunch, held in hand"></div>
+            <div class="cover c6 has-img"><img src="assets/proof-judgenot.jpg" alt="A reader holding the published book Judge Not by Catherine Baldwin"></div>
           </div>
 
           <!-- Social / credibility rail (§2) -->
@@ -252,6 +281,68 @@
             <a class="btn btn-ghost" href="published-books.html">View published books <span class="arrow">→</span></a>
           </div>
         </article>
+
+        <div class="proof-gallery-head">
+          <p class="eyebrow">Real authors, real books</p>
+          <h3>Held in real hands, around the world</h3>
+        </div>
+        <div class="proof-gallery">
+          <figure class="pg-item"><img src="assets/proof-therapy.jpg" alt="Author Paula Axelrod holding Therapy Changed My Suicidal Thoughts to Self-Love"></figure>
+          <figure class="pg-item"><img src="assets/proof-earths.jpg" alt="Author holding Earths Hidden Treasures by Pure Crystal Co."></figure>
+          <figure class="pg-item"><img src="assets/proof-comeforth.jpg" alt="Author Alejandro Del Toro holding Come Forth: Hence the Day"></figure>
+          <figure class="pg-item"><img src="assets/proof-foundations.jpg" alt="Foundations: Heaven's Blueprint for Kingdom Builders by Joseph Bunch, held in hand"></figure>
+          <figure class="pg-item"><img src="assets/proof-authentic.jpg" alt="Author Baron Von Kaiser holding The Authentic Connection"></figure>
+          <figure class="pg-item"><img src="assets/proof-judgenot.jpg" alt="A reader holding the published book Judge Not by Catherine Baldwin"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 5b. PRICING PREVIEW (§3.5) ===================== -->
+    <section class="section how" id="pricing-preview">
+      <div class="wrap">
+        <div class="section-head center">
+          <p class="eyebrow">Publishing packages</p>
+          <h2>Simple, all-inclusive pricing</h2>
+          <p class="lead">Pick the package that fits your book — every tier ends with you owning <b>100% of your rights, royalties and copies</b>.</p>
+        </div>
+        <div class="pkg-mini-grid">
+
+          <article class="pkg-mini">
+            <div class="pm-head"><span class="pm-name">Essentials</span><span class="pm-price">From $350</span></div>
+            <ul class="pm-list">
+              <li>Front-cover design</li>
+              <li>Ebook formatting (ebook only)</li>
+              <li>ISBN setup</li>
+              <li>Amazon KDP &amp; IngramSpark</li>
+            </ul>
+            <a class="btn btn-outline-ink" href="pricing.html#production">See Essentials</a>
+          </article>
+
+          <article class="pkg-mini featured">
+            <span class="pm-popular">Most popular</span>
+            <div class="pm-head"><span class="pm-name">Growth</span><span class="pm-price">From $1,500</span></div>
+            <ul class="pm-list">
+              <li>Copyediting + proofreading</li>
+              <li>Deluxe full-wrap cover</li>
+              <li>Author copies + full platform mix</li>
+              <li>Book Growth: Amazon Ads + keyword SEO</li>
+            </ul>
+            <a class="btn btn-gold" href="pricing.html#production">See Growth</a>
+          </article>
+
+          <article class="pkg-mini">
+            <div class="pm-head"><span class="pm-name">Bestseller</span><span class="pm-price">From $3,000</span></div>
+            <ul class="pm-list">
+              <li>Developmental + line + copyedit</li>
+              <li>Paperback + hardcover + ebook</li>
+              <li>Larger print run + global distribution</li>
+              <li>Full Book Growth + author website + launch</li>
+            </ul>
+            <a class="btn btn-outline-ink" href="pricing.html#production">See Bestseller</a>
+          </article>
+
+        </div>
+        <p class="plat-more" style="text-align:center;">Prices in USD · pay in ₦, C$, € or £. <a class="card-link" style="display:inline-flex;" href="pricing.html">See all packages &amp; pricing <span class="arrow">→</span></a></p>
       </div>
     </section>
 
@@ -347,6 +438,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=9"></script>
 </body>
 </html>
