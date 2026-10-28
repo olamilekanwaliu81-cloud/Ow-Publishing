@@ -268,3 +268,119 @@
     });
   });
 })();
+
+/* ============================================================
+   Image protection (deterrent): block right-click, drag and
+   long-press-save on images site-wide. Not foolproof, a
+   determined visitor can still use dev tools or screenshots.
+   ============================================================ */
+(function () {
+  var onImg = function (e) {
+    var t = e.target;
+    if (t && (t.tagName === 'IMG' || (t.closest && t.closest('img')))) {
+      e.preventDefault();
+      return false;
+    }
+  };
+  document.addEventListener('contextmenu', onImg);
+  document.addEventListener('dragstart', onImg);
+})();
+
+/* ============================================================
+   Pricing currency switcher (USD base -> NGN / CAD / EUR / GBP)
+   Rates are approximate and editable here in one place.
+   ============================================================ */
+(function () {
+  var grid = document.getElementById('pricingPkgs');
+  if (!grid) return;
+  var RATES = {
+    USD: { sym: '$',  rate: 1 },
+    NGN: { sym: '₦', rate: 1650 },
+    CAD: { sym: 'C$', rate: 1.38 },
+    EUR: { sym: '€', rate: 0.92 },
+    GBP: { sym: '£', rate: 0.79 }
+  };
+  var sw = document.getElementById('curSwitch');
+  var note = document.getElementById('curNote');
+  var cur = 'USD';
+  function fmt(usd) {
+    var r = RATES[cur];
+    return r.sym + Math.round(usd * r.rate).toLocaleString('en-US');
+  }
+  function render() {
+    document.querySelectorAll('.amt[data-usd]').forEach(function (el) {
+      var usd = parseFloat(el.getAttribute('data-usd')) || 0;
+      el.textContent = usd ? fmt(usd) : '•••';
+    });
+    if (note) {
+      note.textContent = cur === 'USD'
+        ? 'Prices shown in US dollars.'
+        : 'Approximate ' + cur + ' — you’re billed in USD; OW covers the currency-difference charge.';
+    }
+  }
+  if (sw) {
+    sw.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      cur = b.getAttribute('data-cur');
+      sw.querySelectorAll('button').forEach(function (x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      render();
+    });
+  }
+  render();
+})();
+
+/* ============================================================
+   Dropdown navigation (Publishing / Services / Resources)
+   Desktop: hover (CSS) + click toggle. Mobile: accordion.
+   ============================================================ */
+(function () {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var tops = nav.querySelectorAll('.nav-top');
+  tops.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var li = btn.parentElement;
+      var isOpen = li.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+      nav.querySelectorAll('.has-sub').forEach(function (o) {
+        if (o !== li) {
+          o.classList.remove('open');
+          var b = o.querySelector('.nav-top');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!nav.contains(e.target)) {
+      nav.querySelectorAll('.has-sub.open').forEach(function (o) {
+        o.classList.remove('open');
+        var b = o.querySelector('.nav-top');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      nav.querySelectorAll('.has-sub.open').forEach(function (o) { o.classList.remove('open'); });
+    }
+  });
+})();
+
+/* Highlight the current page in the nav */
+(function () {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  nav.querySelectorAll('.nav-links a[href]').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    if (href === path) {
+      a.classList.add('is-current');
+      var sub = a.closest('.has-sub');
+      if (sub) { var t = sub.querySelector('.nav-top'); if (t) t.classList.add('is-current'); }
+    }
+  });
+})();

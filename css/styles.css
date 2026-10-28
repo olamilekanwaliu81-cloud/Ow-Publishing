@@ -1740,6 +1740,28 @@ p  { margin: 0 0 1rem; }
 .ir-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .ir-links a { font-family: var(--sans); font-size: .82rem; font-weight: 600; padding: 8px 13px; border-radius: 999px; }
 
+/* ============================================================
+   SERVICE PAGES (types cards, "which do you need" guide)
+   ============================================================ */
+.svc-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.svc-card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: 0 12px 30px -22px rgba(15,26,49,.4); display: flex; flex-direction: column; }
+.svc-card .sc-num { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--cream-200); border: 1px solid var(--line); font-family: var(--serif); font-weight: 700; color: var(--gold-deep); margin-bottom: 12px; }
+.svc-card h3 { font-family: var(--serif); font-size: 1.3rem; color: var(--navy); margin: 0 0 10px; }
+.svc-card p { margin: 0 0 10px; font-size: .92rem; color: var(--ink-soft); line-height: 1.55; }
+.svc-card p b { color: var(--ink); }
+.svc-card .sc-when { margin-top: auto; }
+.svc-card .sc-tag { display: inline-block; margin-top: 12px; font-family: var(--sans); font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); background: rgba(212,162,74,.12); padding: 5px 10px; border-radius: 999px; }
+
+.need-table { width: 100%; border-collapse: collapse; font-family: var(--sans); background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.need-table th, .need-table td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--line); font-size: .92rem; }
+.need-table thead th { font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); background: var(--cream-200); }
+.need-table td:last-child { font-weight: 700; color: var(--gold-deep); white-space: nowrap; }
+.need-table tr:last-child td { border-bottom: 0; }
+@media (max-width: 560px) { .need-table th, .need-table td { padding: 11px 12px; font-size: .84rem; } }
+
+.svc-split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+@media (max-width: 820px) { .svc-split { grid-template-columns: 1fr; gap: 24px; } }
+
 /* image protection (deterrent): no drag, no select, no iOS long-press menu */
 img {
   -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none; user-drag: none;
