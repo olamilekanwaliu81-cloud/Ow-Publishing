@@ -1762,6 +1762,16 @@ p  { margin: 0 0 1rem; }
 .svc-split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
 @media (max-width: 820px) { .svc-split { grid-template-columns: 1fr; gap: 24px; } }
 
+/* homepage Google trust badge */
+.trust-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; text-decoration: none; }
+.trust-badge .tb-stars { color: var(--gold); font-size: 1.05rem; letter-spacing: 2px; }
+.trust-badge .tb-text { font-family: var(--sans); font-size: .82rem; color: var(--on-navy-dim); }
+.trust-badge .tb-text b { color: var(--on-navy); font-weight: 600; }
+.trust-badge:hover .tb-text { color: var(--on-navy); }
+
+.foot-review { color: var(--gold-soft) !important; font-weight: 600; }
+.foot-review:hover { color: var(--gold) !important; }
+
 /* image protection (deterrent): no drag, no select, no iOS long-press menu */
 img {
   -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none; user-drag: none;
