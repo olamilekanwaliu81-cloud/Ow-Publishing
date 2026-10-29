@@ -384,3 +384,36 @@
     }
   });
 })();
+
+/* ------------------------------------------------------------------
+   Scroll reveal — gentle fade-up as sections enter the viewport.
+   No-JS safe (markup is visible by default); honours reduced motion.
+------------------------------------------------------------------ */
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var sel = '.section-head, .path-card, .diff-card, .book-card, .pkg-card, .pkg-mini, ' +
+            '.svc-card, .tm-card, .step, .pg-item, .hero-stat, .how-card, .cmp-table, ' +
+            '.need-table, .faq-q, .member-card, .team-grid, .orbit-node';
+  var els = Array.prototype.slice.call(document.querySelectorAll(sel));
+  if (!els.length) return;
+  document.documentElement.classList.add('js-reveal');
+
+  var counts = new Map();
+  els.forEach(function (el) {
+    el.classList.add('reveal');
+    var p = el.parentNode, i = counts.get(p) || 0;
+    counts.set(p, i + 1);
+    el.style.transitionDelay = (Math.min(i, 5) * 65) + 'ms';
+  });
+
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  els.forEach(function (el) { io.observe(el); });
+})();
