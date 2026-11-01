@@ -228,9 +228,9 @@ function owUnit(u) { return u === 'mm' ? 'mm' : 'in'; }
     const pagesHint = el('ccPagesHint');
     if (pagesHint) {
       if (pg && (pg < plat.min || pg > plat.max)) {
-        pagesHint.innerHTML = '<span style="color:#b23b3b">' + plat.label + ' allows ' + plat.min + '–' + plat.max + ' pages.</span>';
+        pagesHint.innerHTML = '<span style="color:#b23b3b">' + plat.label + ' allows ' + plat.min + ' to ' + plat.max + ' pages.</span>';
       } else {
-        pagesHint.textContent = 'Total pages including front and back matter — ' + plat.label + ' allows ' + plat.min + '–' + plat.max + '.';
+        pagesHint.textContent = 'Total pages including front and back matter, ' + plat.label + ' allows ' + plat.min + ' to ' + plat.max + '.';
       }
     }
 
@@ -368,9 +368,9 @@ const OW_IDEA = {
     { label: 'an academic / textbook', kw: ['textbook', 'academic', 'research', 'thesis', 'curriculum', 'students will'], path: 'print' }
   ],
   paths: {
-    grow: { rec: 'This suits <b>self-publishing with a Book Growth retainer</b> — get it produced properly, then actively work on the sales.', links: [['See Self-Publishing', 'self-publishing.html']] },
-    agent: { rec: 'This could be <b>strong enough to try the agent route first</b> — and if that doesn’t land, it’s ready to self-publish with us instead.', links: [['See The Agent Route', 'agent-route.html'], ['Or Self-Publishing', 'self-publishing.html']] },
-    print: { rec: 'This is a <b>great candidate for self-publishing</b> — and for <b>local print</b> too if you want physical copies in hand.', links: [['See Self-Publishing', 'self-publishing.html'], ['Or Local Print', 'local-print.html']] }
+    grow: { rec: 'This suits <b>self-publishing with a Book Growth retainer</b>, get it produced properly, then actively work on the sales.', links: [['See Self-Publishing', 'self-publishing.html']] },
+    agent: { rec: 'This could be <b>strong enough to try the agent route first</b>, and if that doesn’t land, it’s ready to self-publish with us instead.', links: [['See The Agent Route', 'agent-route.html'], ['Or Self-Publishing', 'self-publishing.html']] },
+    print: { rec: 'This is a <b>great candidate for self-publishing</b>, and for <b>local print</b> too if you want physical copies in hand.', links: [['See Self-Publishing', 'self-publishing.html'], ['Or Local Print', 'local-print.html']] }
   }
 };
 
@@ -429,7 +429,7 @@ const OW_IDEA = {
     const err = document.createElement('div'); err.className = 'chat-err'; err.style.display = 'none';
     function submit() {
       const v = ta.value.trim();
-      if (v.length < (minChars || 1)) { err.textContent = 'A little more detail helps — aim for a sentence or two.'; err.style.display = 'block'; return; }
+      if (v.length < (minChars || 1)) { err.textContent = 'A little more detail helps, aim for a sentence or two.'; err.style.display = 'block'; return; }
       addMsg('me', esc(v)); clearInput(); onSubmit(v);
     }
     send.addEventListener('click', submit);
@@ -465,13 +465,13 @@ const OW_IDEA = {
     const path = goalPath[state.goal] || a.path;
     const p = OW_IDEA.paths[path];
     const stageLine = {
-      idea: 'You’re at the idea stage — the perfect time to shape it before a word is wasted.',
-      writing: 'You’re actively writing — momentum is everything from here.',
-      ready: 'Your manuscript is ready — that’s the hardest part done.'
+      idea: 'You’re at the idea stage, the perfect time to shape it before a word is wasted.',
+      writing: 'You’re actively writing, momentum is everything from here.',
+      ready: 'Your manuscript is ready, that’s the hardest part done.'
     }[state.stage] || '';
     const genreLine = a.matched
       ? 'From what you shared, this reads like <b>' + a.genre + '</b>.'
-      : 'Your idea is <b>' + a.genre + '</b> — which just means it’s worth a proper conversation to place it.';
+      : 'Your idea is <b>' + a.genre + '</b>, which just means it’s worth a proper conversation to place it.';
     const marketLine = a.matched
       ? 'That’s a category with a real, reachable readership. The key is producing it to a professional standard and getting it in front of the right readers.'
       : 'The best next step is a quick chat so we can place it and map the right path.';
@@ -488,7 +488,7 @@ const OW_IDEA = {
       '</div>';
     bot('Thanks, ' + esc(state.name.split(' ')[0] || 'there') + '! I’ve put together your report 👇', function () {
       bot(report, function () {
-        bot('This is a helpful first look, not a verdict — every book deserves a real conversation. I’ve sent a copy to the OW team and they’ll follow up on your email. 💛', function () {
+        bot('This is a helpful first look, not a verdict, every book deserves a real conversation. I’ve sent a copy to the OW team and they’ll follow up on your email. 💛', function () {
           clearInput();
           const wrap = document.createElement('div'); wrap.className = 'quick';
           const b = document.createElement('button'); b.type = 'button'; b.textContent = 'Check another idea';
@@ -499,7 +499,7 @@ const OW_IDEA = {
     });
     try {
       const data = new FormData();
-      data.append('_subject', 'AI Book Assistant — new idea submitted');
+      data.append('_subject', 'AI Book Assistant, new idea submitted');
       data.append('Name', state.name);
       data.append('Email', state.email);
       data.append('WhatsApp', state.whatsapp);
@@ -524,15 +524,15 @@ const OW_IDEA = {
     });
   }
   function q2() {
-    bot('Got it. In a sentence or two, what’s your book about — and who’s it for?', function () {
+    bot('Got it. In a sentence or two, what’s your book about, and who’s it for?', function () {
       textInput('e.g. A memoir about rebuilding after loss, for women starting over in midlife…', 25, function (v) { state.description = v; q3(); });
     });
   }
   function afterStage(v) { state.stage = v; q2(); }
   function start() {
-    bot('Hi, I’m Ola — OW’s book assistant. 👋', function () {
+    bot('Hi, I’m Ola, OW’s book assistant. 👋', function () {
       bot('I’ll ask a few quick questions, then give you an honest first look at your idea and the path to publishing it.', function () {
-        bot('First up — where are you with your book?', function () {
+        bot('First up, where are you with your book?', function () {
           quickReplies([
             { label: 'Just an idea', value: 'idea', go: afterStage },
             { label: "I'm writing it", value: 'writing', go: afterStage },

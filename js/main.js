@@ -27,7 +27,7 @@
 // Consultation booking, availability-restricted time picker
 // -------------------------------------------------------------
 // EDIT AVAILABILITY HERE. Hours in 24h; 24 = midnight. slotMinutes = gap between times.
-// weekday = Mon–Fri, weekend = Sat & Sun.
+// weekday = Mon to Fri, weekend = Sat & Sun.
 (function () {
   const dateEl = document.getElementById('bkDate');
   const timeEl = document.getElementById('bkTime');
@@ -35,7 +35,7 @@
 
   const BOOKING = {
     slotMinutes: 30,
-    weekday: [[13, 16], [20, 24]],   // 1–4 PM and 8 PM–12 AM
+    weekday: [[13, 16], [20, 24]],   // 1 to 4 PM and 8 PM to 12 AM
     weekend: [[0, 24]]               // Sat & Sun: any time
   };
 
@@ -69,7 +69,7 @@
     const hint = document.getElementById('bkTimeHint');
     if (hint) hint.textContent = isWeekend
       ? 'Weekend, any time works. We’ll confirm the exact slot with you.'
-      : 'Weekday availability: 1–4 PM and 8 PM–12 AM. We’ll confirm the exact slot.';
+      : 'Weekday availability: 1 to 4 PM and 8 PM to 12 AM. We’ll confirm the exact slot.';
   }
   dateEl.addEventListener('change', populate);
   populate();
@@ -315,7 +315,7 @@
     if (note) {
       note.textContent = cur === 'USD'
         ? 'Prices shown in US dollars.'
-        : 'Approximate ' + cur + ' — you’re billed in USD; OW covers the currency-difference charge.';
+        : 'Approximate ' + cur + ', you’re billed in USD; OW covers the currency-difference charge.';
     }
   }
   if (sw) {
@@ -386,7 +386,7 @@
 })();
 
 /* ------------------------------------------------------------------
-   Scroll reveal — gentle fade-up as sections enter the viewport.
+   Scroll reveal, gentle fade-up as sections enter the viewport.
    No-JS safe (markup is visible by default); honours reduced motion.
 ------------------------------------------------------------------ */
 (function () {
