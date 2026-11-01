@@ -417,3 +417,14 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
   els.forEach(function (el) { io.observe(el); });
 })();
+
+/* ------------------------------------------------------------------
+   Search form guard — stop the book-search form reloading the page
+   on Enter (filtering is handled live by JS). Replaces an inline
+   onsubmit handler so the Content-Security-Policy can stay strict.
+------------------------------------------------------------------ */
+(function () {
+  document.querySelectorAll('form.book-search').forEach(function (f) {
+    f.addEventListener('submit', function (e) { e.preventDefault(); });
+  });
+})();
