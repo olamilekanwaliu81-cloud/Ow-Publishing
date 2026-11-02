@@ -108,20 +108,33 @@
     var sess = (await sb.auth.getSession()).data.session;
     if (sess) showDash(sess); else showLogin();
   }
-  function showLogin() { $('loginView').hidden = false; $('dashView').hidden = true; }
+  var dashShown = false;
+  function showLogin() { dashShown = false; $('loginView').hidden = false; $('dashView').hidden = true; }
   function showDash(sess) {
     $('loginView').hidden = true; $('dashView').hidden = false;
-    $('whoami').textContent = sess.user.email;
+    $('whoami').textContent = (sess && sess.user && sess.user.email) || '';
+    if (dashShown) return;
+    dashShown = true;
     buildTabs(); select('books');
   }
+
+  // Reveal the dashboard whenever auth reports a signed-in session.
+  sb.auth.onAuthStateChange(function (_event, session) { if (session) showDash(session); });
 
   $('loginForm').addEventListener('submit', async function (e) {
     e.preventDefault(); loginErr.textContent = '';
     var btn = $('loginBtn'); btn.classList.add('adm-busy');
-    var r = await sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('password').value });
-    btn.classList.remove('adm-busy');
-    if (r.error) { loginErr.textContent = r.error.message; return; }
-    showDash(r.data.session);
+    try {
+      var r = await sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('password').value });
+      if (r && r.error) { loginErr.textContent = r.error.message || 'Sign-in failed.'; return; }
+      var session = (r && r.data && r.data.session) || (await sb.auth.getSession()).data.session;
+      if (!session) { loginErr.textContent = 'Signed in but no session was saved. If you block cookies/site-data for this site, allow it and try again.'; return; }
+      showDash(session);
+    } catch (err) {
+      loginErr.textContent = 'Login error: ' + (err && err.message ? err.message : String(err));
+    } finally {
+      btn.classList.remove('adm-busy');
+    }
   });
   $('logoutBtn').addEventListener('click', async function () { await sb.auth.signOut(); showLogin(); });
 
