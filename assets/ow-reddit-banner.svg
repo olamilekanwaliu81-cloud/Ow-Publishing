@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="384" viewBox="0 0 1920 384" font-family="'Outfit','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&amp;family=Outfit:wght@400;500;600&amp;display=swap');
+      .serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;}
+      .sans{font-family:'Outfit','Helvetica Neue',Arial,sans-serif;}
+    </style>
+    <radialGradient id="bg" cx="28%" cy="30%" r="90%">
+      <stop offset="0%" stop-color="#1B2C4B"/>
+      <stop offset="55%" stop-color="#132240"/>
+      <stop offset="100%" stop-color="#0F1A31"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8C784"/>
+      <stop offset="50%" stop-color="#D4A24A"/>
+      <stop offset="100%" stop-color="#B8842F"/>
+    </linearGradient>
+    <linearGradient id="goldLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#D4A24A" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#D4A24A"/>
+      <stop offset="100%" stop-color="#D4A24A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="384" fill="url(#bg)"/>
+  <text x="1715" y="300" class="serif" font-size="520" fill="#D4A24A" opacity="0.06" text-anchor="middle">&#8221;</text>
+  <g fill="#D4A24A">
+    <path d="M1560 70 Q1560 96 1586 96 Q1560 96 1560 122 Q1560 96 1534 96 Q1560 96 1560 70 Z" opacity="0.5"/>
+    <path d="M1800 200 Q1800 218 1818 218 Q1800 218 1800 236 Q1800 218 1782 218 Q1800 218 1800 200 Z" opacity="0.4"/>
+    <path d="M1648 322 Q1648 336 1662 336 Q1648 336 1648 350 Q1648 336 1634 336 Q1648 336 1648 322 Z" opacity="0.5"/>
+    <path d="M466 60 Q466 74 480 74 Q466 74 466 88 Q466 74 452 74 Q466 74 466 60 Z" opacity="0.3"/>
+  </g>
+  <rect x="0" y="0" width="1920" height="4" fill="url(#goldLine)" opacity="0.7"/>
+  <rect x="0" y="380" width="1920" height="4" fill="url(#goldLine)" opacity="0.5"/>
+
+  <!-- Monogram badge -->
+  <g>
+    <circle cx="210" cy="192" r="118" fill="#101D36" stroke="url(#gold)" stroke-width="3"/>
+    <circle cx="210" cy="192" r="104" fill="none" stroke="#D4A24A" stroke-width="1" opacity="0.35"/>
+    <text x="210" y="210" class="serif" font-size="104" font-weight="600" fill="url(#gold)" text-anchor="middle" letter-spacing="2">OW</text>
+    <text x="210" y="262" class="sans" font-size="13" fill="#FDFAF5" text-anchor="middle" letter-spacing="5" opacity="0.8">PUBLISHING&#160;HOUSE</text>
+  </g>
+
+  <!-- Top-right wordmark -->
+  <g text-anchor="end">
+    <text x="1838" y="62" class="sans" font-size="22" fill="#FDFAF5" letter-spacing="6">OW&#160;PUBLISHING&#160;HOUSE</text>
+    <rect x="1548" y="78" width="290" height="2" fill="#D4A24A" opacity="0.8"/>
+    <text x="1838" y="104" class="sans" font-size="14" fill="#D4A24A" letter-spacing="3">HYBRID&#160;PUBLISHING&#160;&#183;&#160;100%&#160;YOUR&#160;RIGHTS</text>
+  </g>
+
+  <!-- Tag pills -->
+  <g class="sans" font-size="18" letter-spacing="2" fill="#FDFAF5">
+    <rect x="392" y="56" width="196" height="42" rx="21" fill="none" stroke="#D4A24A" stroke-width="1.5" opacity="0.9"/>
+    <text x="490" y="83" text-anchor="middle">SELF&#8209;PUBLISHING</text>
+    <rect x="604" y="56" width="196" height="42" rx="21" fill="none" stroke="#D4A24A" stroke-width="1.5" opacity="0.9"/>
+    <text x="702" y="83" text-anchor="middle">THE&#160;AGENT&#160;ROUTE</text>
+    <rect x="816" y="56" width="230" height="42" rx="21" fill="none" stroke="#D4A24A" stroke-width="1.5" opacity="0.9"/>
+    <text x="931" y="83" text-anchor="middle">LOCAL&#160;PRINT&#160;&#183;&#160;NG</text>
+  </g>
+
+  <!-- Headline -->
+  <g class="serif" fill="#FDFAF5">
+    <text x="390" y="178" font-size="76" font-weight="600">Produce. Publish.</text>
+    <text x="390" y="250" font-size="76" font-weight="600" font-style="italic" fill="url(#gold)">Grow the sales.</text>
+  </g>
+
+  <!-- Subline -->
+  <text x="392" y="302" class="sans" font-size="22" fill="#AEB8C7">Hybrid publishing for authors &#8212; your book,
+    <tspan fill="#FDFAF5">beautifully made &amp; truly yours.</tspan>
+  </text>
+
+  <!-- Contact strip -->
+  <g class="sans" font-size="21" letter-spacing="1">
+    <text x="392" y="348" fill="#FDFAF5">owpublishiing.com</text>
+    <text x="630" y="348" fill="#D4A24A">&#9679;</text>
+    <text x="658" y="348" fill="#FDFAF5">WhatsApp +234 904 253 4953</text>
+  </g>
+</svg>

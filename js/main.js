@@ -184,18 +184,38 @@
     if (next) next.addEventListener('click', function () { if (page < pages) { page++; render(); window.scrollTo({ top: app.offsetTop - 70, behavior: 'smooth' }); } });
   }
   render();
+
+  // Merge in blog posts managed from the CMS (if configured), then re-render.
+  (function () {
+    var cfg = window.OW_CMS || {}, key = cfg.SUPABASE_KEY || cfg.SUPABASE_ANON_KEY;
+    if (!cfg.SUPABASE_URL || !key || /YOUR-/.test(cfg.SUPABASE_URL) || /YOUR-/.test(key)) return;
+    var thumbs = ['th-navy', 'th-gold', 'th-plum', 'th-teal', 'th-rust'];
+    fetch(cfg.SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/posts?select=*&published=eq.true&order=sort_order.asc,published_date.desc', { headers: { apikey: key } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rows) {
+        if (!rows || !rows.length) return;
+        rows.slice().reverse().forEach(function (p, i) {
+          var d = p.published_date ? new Date(p.published_date) : null;
+          var date = (d && !isNaN(d)) ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+          var cat = p.category || 'Insights';
+          POSTS.unshift({ t: p.title, cat: cat, thumb: thumbs[i % thumbs.length], date: date, url: 'post.html?id=' + encodeURIComponent(p.id), e: p.excerpt || '' });
+          if (cats.indexOf(cat) === -1) cats.push(cat);
+        });
+        page = 1; render();
+      }).catch(function () {});
+  })();
 })();
 
 // Published Books, category filter + search
 (function () {
   const tabs = document.querySelectorAll('.filter-tab');
-  const cards = document.querySelectorAll('.book-card');
   const search = document.getElementById('bookSearch');
   const noRes = document.querySelector('.no-results');
-  if (!cards.length) return;
+  if (!document.querySelector('.book-grid')) return;
   let cat = 'all';
 
   function apply() {
+    const cards = document.querySelectorAll('.book-card'); // re-query (the CMS may have re-rendered these)
     const q = search ? search.value.trim().toLowerCase() : '';
     let shown = 0;
     cards.forEach(function (card) {
@@ -217,6 +237,7 @@
     });
   });
   if (search) search.addEventListener('input', apply);
+  document.addEventListener('cms:books-rendered', apply); // re-apply filter/search after the CMS renders books
 })();
 
 // Book Spec Collector / contact forms (Formspree, no live price)

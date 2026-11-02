@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin · OW Publishing House</title>
+  <title>Sign in · OW Publishing Admin</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -11,87 +11,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=67">
-  <link rel="stylesheet" href="css/admin.css?v=1">
+  <link rel="stylesheet" href="css/admin.css?v=2">
 </head>
 <body class="admin">
-
-  <!-- ===================== LOGIN ===================== -->
-  <div id="loginView" class="adm-login">
-    <form class="adm-login-card" id="loginForm">
-      <img class="logo" src="assets/ow-logo-monogram.png" alt="OW Publishing House">
+  <div class="login-screen">
+    <form class="login-card" id="loginForm" autocomplete="off">
+      <img class="login-logo" src="assets/ow-logo-monogram.png" alt="OW Publishing House">
       <h1>OW Admin</h1>
       <p class="sub">Sign in to manage your website content.</p>
-      <div class="adm-field">
+
+      <div class="fld">
         <label for="email">Email</label>
         <input type="email" id="email" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" required>
       </div>
-      <div class="adm-field">
+      <div class="fld">
         <label for="password">Password</label>
         <input type="password" id="password" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" required>
-        <label style="display:flex;align-items:center;gap:7px;font-weight:400;font-size:.82rem;color:var(--ink-soft);margin-top:8px;cursor:pointer">
-          <input type="checkbox" id="showPw"> Show password
-        </label>
+        <label class="show-pw"><input type="checkbox" id="showPw"> Show password</label>
       </div>
-      <button type="submit" class="btn btn-gold btn-lg" id="loginBtn" style="width:100%;justify-content:center">Sign in</button>
-      <div class="adm-err" id="loginErr"></div>
 
-      <div style="display:flex;align-items:center;gap:10px;color:var(--ink-soft);font-size:.78rem;margin:18px 0 12px">
-        <span style="flex:1;height:1px;background:var(--line)"></span>no password?<span style="flex:1;height:1px;background:var(--line)"></span>
-      </div>
+      <button type="submit" class="btn btn-gold btn-lg" id="loginBtn">Sign in</button>
+      <div class="msg err" id="loginErr"></div>
+
+      <div class="login-sep"><span></span>no password?<span></span></div>
       <button type="button" class="btn btn-ghost" id="magicBtn" style="width:100%;justify-content:center">Email me a sign-in link</button>
-      <div class="adm-err" id="magicMsg" style="color:var(--ink-soft)"></div>
+      <div class="msg info" id="magicMsg"></div>
     </form>
   </div>
 
-  <!-- ===================== DASHBOARD ===================== -->
-  <div id="dashView" hidden>
-    <header class="adm-top">
-      <div class="admin-wrap adm-top-inner">
-        <div class="adm-brand">
-          <img src="assets/ow-logo-monogram.png" alt="">
-          OW Publishing House <span class="tag">Admin</span>
-        </div>
-        <div class="adm-user">
-          <span id="whoami"></span>
-          <button class="adm-logout" id="logoutBtn">Log out</button>
-        </div>
-      </div>
-    </header>
-
-    <main class="admin-wrap">
-      <nav class="adm-tabs" id="tabs"></nav>
-
-      <div class="adm-panel-head">
-        <div>
-          <h2 id="panelTitle">Published Books</h2>
-          <span class="adm-count" id="panelCount"></span>
-        </div>
-        <button class="btn btn-gold" id="addBtn">+ Add new</button>
-      </div>
-
-      <div class="adm-section-note" id="panelNote"></div>
-      <div class="adm-list" id="list"></div>
-    </main>
-  </div>
-
-  <!-- ===================== EDITOR DRAWER ===================== -->
-  <div class="adm-overlay" id="overlay"></div>
-  <aside class="adm-drawer" id="drawer" aria-hidden="true">
-    <div class="adm-drawer-head">
-      <h3 id="drawerTitle">Add item</h3>
-      <button class="adm-close" id="drawerClose" aria-label="Close">&times;</button>
-    </div>
-    <form class="adm-form" id="drawerForm"></form>
-    <div class="adm-drawer-foot">
-      <button type="button" class="btn btn-outline-ink" id="drawerCancel">Cancel</button>
-      <button type="button" class="btn btn-gold" id="drawerSave">Save</button>
-    </div>
-  </aside>
-
-  <div class="adm-toast" id="toast"></div>
-
   <script src="js/supabase.js?v=1"></script>
   <script src="js/cms-config.js?v=1"></script>
-  <script src="js/admin.js?v=3"></script>
+  <script src="js/admin-login.js?v=1"></script>
 </body>
 </html>

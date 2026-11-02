@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog · OW Publishing House</title>
+  <meta name="description" content="An article from OW Publishing House.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=67">
+  <style>
+    .post-topbar { background: var(--navy); border-bottom: 1px solid var(--navy-700); }
+    .post-topbar .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 60px; }
+    .post-topbar a { color: var(--on-navy); display: inline-flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 1.1rem; }
+    .post-topbar img { width: 30px; height: 30px; border-radius: 50%; }
+    .post-topbar .back { font-family: var(--sans); font-size: .85rem; color: var(--on-navy-dim); }
+    .post-topbar .back:hover { color: var(--gold-soft); }
+    .post-hero { background: var(--navy); color: var(--on-navy); padding-block: clamp(40px,6vw,72px); }
+    .post-hero h1 { color: #fff; max-width: 840px; }
+    .post-hero .post-byline { color: var(--on-navy-dim); font-size: .9rem; margin-top: 10px; }
+    .post-wrap { max-width: 760px; }
+    #postCover { display: none; width: 100%; border-radius: var(--radius-lg); margin: clamp(-40px,-4vw,-28px) 0 32px; box-shadow: var(--shadow); position: relative; z-index: 1; }
+    .post-content { font-size: 1.12rem; line-height: 1.75; color: var(--ink); }
+    .post-content p { margin: 0 0 1.1em; }
+    .post-foot { border-top: 1px solid var(--line); margin-top: 48px; padding-top: 32px; text-align: center; }
+  </style>
+</head>
+<body>
+  <header class="post-topbar">
+    <div class="wrap">
+      <a href="/"><img src="assets/ow-logo-monogram.png" alt="">OW Publishing House</a>
+      <a class="back" href="resources">&larr; All articles</a>
+    </div>
+  </header>
+
+  <section class="post-hero">
+    <div class="wrap post-wrap">
+      <p class="eyebrow" style="color:var(--gold-soft)">From the blog</p>
+      <h1 id="postTitle">Loading…</h1>
+      <p class="post-byline" id="postDate"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap post-wrap">
+      <img id="postCover" alt="">
+      <div class="post-content" id="postBody"></div>
+      <div class="post-foot">
+        <a class="btn btn-gold btn-lg" href="consultation">Book a free consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/cms-config.js?v=1"></script>
+  <script src="js/cms-post.js?v=1"></script>
+</body>
+</html>

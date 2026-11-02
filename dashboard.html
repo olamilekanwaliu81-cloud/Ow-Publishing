@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · OW Publishing Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=67">
+  <link rel="stylesheet" href="css/admin.css?v=2">
+</head>
+<body class="admin">
+  <div class="app" id="app" style="visibility:hidden">
+    <!-- SIDEBAR -->
+    <aside class="side" id="side">
+      <div class="side-brand">
+        <img src="assets/ow-logo-monogram.png" alt="">
+        <div><b>OW Publishing</b><span class="tag">Content Manager</span></div>
+      </div>
+      <nav class="side-nav" id="sideNav"></nav>
+      <div class="side-foot">
+        <span class="side-user" id="sideUser"></span>
+        <a href="/" target="_blank" rel="noopener">↗ View live site</a>
+        <button id="logoutBtn">⎋ Log out</button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="main-top">
+        <div style="display:flex;align-items:center;gap:14px;min-width:0">
+          <button class="side-toggle" id="sideToggle" aria-label="Menu">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </button>
+          <div style="min-width:0">
+            <h1 id="pageTitle">Overview</h1>
+            <div class="count-line" id="countLine"></div>
+          </div>
+        </div>
+        <button class="btn btn-gold" id="addBtn" style="display:none">+ Add new</button>
+      </div>
+      <div class="main-body">
+        <div class="panel-note" id="panelNote" style="display:none"></div>
+        <div id="content"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- EDITOR DRAWER -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <h3 id="drawerTitle">Add item</h3>
+      <button class="drawer-close" id="drawerClose" aria-label="Close">&times;</button>
+    </div>
+    <form class="drawer-form" id="drawerForm"></form>
+    <div class="drawer-foot">
+      <button type="button" class="btn btn-outline-ink" id="drawerCancel">Cancel</button>
+      <button type="button" class="btn btn-gold" id="drawerSave">Save</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/supabase.js?v=1"></script>
+  <script src="js/cms-config.js?v=1"></script>
+  <script src="js/admin-dashboard.js?v=2"></script>
+</body>
+</html>

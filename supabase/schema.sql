@@ -40,6 +40,7 @@ create table if not exists public.posts (
   excerpt        text,
   body           text,
   cover_url      text,
+  category       text,
   published      boolean default true,
   published_date date default current_date,
   sort_order     int default 0
