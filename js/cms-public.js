@@ -105,7 +105,9 @@
   });
 
   var testiGrids = document.querySelectorAll('.testi-grid');
-  if (testiGrids.length) get('reviews?select=*&order=sort_order.asc,created_at.desc').then(function (rows) { if (rows && rows.length) testiGrids.forEach(function (g) { renderReviews(g, rows); }); });
+  if (testiGrids.length) get('reviews?select=*&order=sort_order.asc,created_at.desc').then(function (rows) {
+    if (rows && rows.length) { testiGrids.forEach(function (g) { renderReviews(g, rows); }); document.dispatchEvent(new Event('cms:testi-rendered')); }
+  });
 
   var teamGrid = document.querySelector('.team-grid');
   if (teamGrid) get('team?select=*&order=sort_order.asc,created_at.desc').then(function (rows) { if (rows && rows.length) renderTeam(teamGrid, rows); });

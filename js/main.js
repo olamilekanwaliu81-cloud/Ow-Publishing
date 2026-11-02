@@ -468,3 +468,32 @@
     '<span class="wa-label">Chat with us</span>';
   document.body.appendChild(a);
 })();
+
+/* ------------------------------------------------------------------
+   Testimonials carousel — slide horizontally instead of wrapping to a
+   second row when there are more than 3 reviews.
+------------------------------------------------------------------ */
+(function () {
+  document.querySelectorAll('.testi-grid').forEach(function (grid) {
+    if (grid.closest('.testi-carousel')) return;
+    var wrap = document.createElement('div'); wrap.className = 'testi-carousel';
+    grid.parentNode.insertBefore(wrap, grid); wrap.appendChild(grid);
+    var prev = document.createElement('button'); prev.type = 'button'; prev.className = 'testi-arrow prev'; prev.setAttribute('aria-label', 'Previous reviews');
+    prev.innerHTML = '<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>';
+    var next = document.createElement('button'); next.type = 'button'; next.className = 'testi-arrow next'; next.setAttribute('aria-label', 'More reviews');
+    next.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>';
+    wrap.appendChild(prev); wrap.appendChild(next);
+    function step() { var c = grid.querySelector('.testi-card'); return c ? c.offsetWidth + 22 : grid.clientWidth; }
+    function update() {
+      wrap.classList.toggle('has-overflow', grid.scrollWidth - grid.clientWidth > 4);
+      prev.disabled = grid.scrollLeft <= 2;
+      next.disabled = grid.scrollLeft >= grid.scrollWidth - grid.clientWidth - 2;
+    }
+    prev.addEventListener('click', function () { grid.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    next.addEventListener('click', function () { grid.scrollBy({ left: step(), behavior: 'smooth' }); });
+    grid.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    document.addEventListener('cms:testi-rendered', function () { setTimeout(update, 40); });
+    update();
+  });
+})();
