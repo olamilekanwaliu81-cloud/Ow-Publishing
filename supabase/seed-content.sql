@@ -25,10 +25,10 @@ end $$;
 do $$
 begin
   if (select count(*) from public.reviews) = 0 then
-    insert into public.reviews (name, book_title, quote, rating, source, link, sort_order) values
-      ('Catherine Baldwin', 'Judge Not', 'Olamilekan did a spectacular job formatting my manuscript, designing the covers and providing a comprehensive marketing plan. He went above and beyond, even doing some manuscript editing that my editor failed to do. He was always cooperative and kind. I highly recommend him!', 4.3, 'fiverr', 'https://www.fiverr.com/bizzerro', 1),
-      ('Paula Axelrod', 'Therapy Changed My Suicidal Thoughts to Self-Love', 'Very grateful for all the help and expertise shown and shared during this journey, from start to finish. Would highly recommend.', 5, 'fiverr', 'https://www.fiverr.com/bizzerro', 2),
-      ('Charlotte Shop', 'Left on Read', 'Absolutely exceptional work! He was professional, patient, responsive, and incredibly attentive to detail. He did an amazing job formatting Left on Read, especially the text messages and social-media elements, and truly brought our vision to life. The book looks polished, engaging and professional. I would absolutely work with him again.', 5, 'fiverr', 'https://www.fiverr.com/bizzerro', 3);
+    insert into public.reviews (name, book_title, quote, rating, source, link, country, sort_order) values
+      ('Catherine Baldwin', 'Judge Not', 'Olamilekan did a spectacular job formatting my manuscript, designing the covers and providing a comprehensive marketing plan. He went above and beyond, even doing some manuscript editing that my editor failed to do. He was always cooperative and kind. I highly recommend him!', 4.3, 'fiverr', 'https://www.fiverr.com/bizzerro', 'US', 1),
+      ('Paula Axelrod', 'Therapy Changed My Suicidal Thoughts to Self-Love', 'Very grateful for all the help and expertise shown and shared during this journey, from start to finish. Would highly recommend.', 5, 'fiverr', 'https://www.fiverr.com/bizzerro', 'US', 2),
+      ('Charlotte Shop', 'Left on Read', 'Absolutely exceptional work! He was professional, patient, responsive, and incredibly attentive to detail. He did an amazing job formatting Left on Read, especially the text messages and social-media elements, and truly brought our vision to life. The book looks polished, engaging and professional. I would absolutely work with him again.', 5, 'fiverr', 'https://www.fiverr.com/bizzerro', 'CA', 3);
   end if;
 end $$;
 

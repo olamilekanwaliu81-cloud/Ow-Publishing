@@ -29,6 +29,7 @@ create table if not exists public.reviews (
   rating      numeric default 5,           -- 0..5
   source      text default 'fiverr',       -- 'fiverr' | 'google'
   link        text,
+  country     text,                        -- ISO-2 code, e.g. 'US','CA','GB'
   sort_order  int default 0
 );
 

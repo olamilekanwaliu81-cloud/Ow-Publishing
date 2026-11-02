@@ -1896,6 +1896,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .testi-card figcaption { margin-top: auto; display: flex; flex-direction: column; gap: 3px; }
 .testi-card figcaption b { font-family: var(--sans); font-weight: 700; color: var(--navy); font-size: 1rem; }
 .testi-card figcaption > span { font-size: .85rem; color: var(--ink-soft); }
+.testi-flag { width: 18px; height: auto; border-radius: 2px; vertical-align: -3px; margin-right: 5px; box-shadow: 0 0 0 1px rgba(15,26,49,.12); }
 .testi-card figcaption a {
   font-size: .82rem; font-weight: 600; color: var(--gold-deep);
   margin-top: 5px; display: inline-flex; align-items: center; gap: 5px;

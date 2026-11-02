@@ -57,6 +57,7 @@
       fields: [
         { k: 'name', label: 'Reviewer name', type: 'text', req: true },
         { k: 'book_title', label: 'Book', type: 'text' },
+        { k: 'country', label: 'Country', type: 'select', opts: [['', '— none —'], ['US', 'United States'], ['GB', 'United Kingdom'], ['CA', 'Canada'], ['AU', 'Australia'], ['NG', 'Nigeria'], ['ZA', 'South Africa'], ['IE', 'Ireland'], ['NZ', 'New Zealand'], ['IN', 'India'], ['KE', 'Kenya'], ['GH', 'Ghana'], ['DE', 'Germany'], ['FR', 'France'], ['AE', 'United Arab Emirates']] },
         { k: 'quote', label: 'Review quote', type: 'textarea', req: true },
         { k: 'rating', label: 'Rating (0–5)', type: 'number', step: '0.1', min: '0', max: '5' },
         { k: 'source', label: 'Source', type: 'select', opts: [['fiverr', 'Fiverr'], ['google', 'Google']] },

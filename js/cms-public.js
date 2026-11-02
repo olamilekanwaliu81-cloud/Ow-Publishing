@@ -62,11 +62,19 @@
   }
 
   /* ---------------- REVIEWS ---------------- */
+  var COUNTRIES = { US: 'United States', GB: 'United Kingdom', CA: 'Canada', AU: 'Australia', NG: 'Nigeria', ZA: 'South Africa', IE: 'Ireland', NZ: 'New Zealand', IN: 'India', KE: 'Kenya', GH: 'Ghana', DE: 'Germany', FR: 'France', AE: 'United Arab Emirates' };
   function renderReviews(grid, rows) {
     grid.innerHTML = rows.map(function (r) {
       var rating = (r.rating == null ? 5 : r.rating);
       var srcLabel = r.source === 'google' ? 'Read on Google' : 'Verified Fiverr review';
-      var sub = r.book_title ? '<span>Author of <i>' + esc(r.book_title) + '</i></span>' : '';
+      var parts = [];
+      if (r.book_title) parts.push('Author of <i>' + esc(r.book_title) + '</i>');
+      if (r.country) {
+        var code = String(r.country).toLowerCase();
+        var name = COUNTRIES[String(r.country).toUpperCase()] || esc(r.country);
+        parts.push('<img class="testi-flag" src="https://flagcdn.com/w40/' + encodeURIComponent(code) + '.png" width="20" height="15" alt="" loading="lazy">' + name);
+      }
+      var sub = parts.length ? '<span>' + parts.join(' &middot; ') + '</span>' : '';
       var link = r.link ? '<a href="' + esc(r.link) + '" target="_blank" rel="noopener">' + srcLabel + ' <span class="arrow">&rarr;</span></a>' : '';
       return '<figure class="testi-card">' +
         '<span class="stars" style="--rating:' + rating + '" aria-label="Rated ' + rating + ' out of 5"></span>' +
