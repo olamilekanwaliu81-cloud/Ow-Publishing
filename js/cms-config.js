@@ -11,6 +11,6 @@
    NEVER paste a "secret" key (sb_secret_…) or the "service_role" key here.
 ------------------------------------------------------------------ */
 window.OW_CMS = {
-  SUPABASE_URL: 'https://YOUR-PROJECT-ID.supabase.co',
+  SUPABASE_URL: 'https://dwnymvujdckcftrldfeq.supabase.co',
   SUPABASE_KEY: 'sb_publishable_-3NTX-smD1beTDyn2Nl8oQ_vBC-DX-r'
 };
