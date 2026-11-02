@@ -12,5 +12,5 @@
 ------------------------------------------------------------------ */
 window.OW_CMS = {
   SUPABASE_URL: 'https://YOUR-PROJECT-ID.supabase.co',
-  SUPABASE_KEY: 'YOUR-PUBLISHABLE-KEY'
+  SUPABASE_KEY: 'sb_publishable_-3NTX-smD1beTDyn2Nl8oQ_vBC-DX-r'
 };
