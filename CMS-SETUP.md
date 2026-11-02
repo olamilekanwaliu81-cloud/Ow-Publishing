@@ -35,15 +35,16 @@ Do these steps once. After that, you just log in and manage content.
 > That's it for security: only the user you just created can log in, and only a logged-in user can change your content.
 
 ## 4. Connect your website
-1. In Supabase go to **Project Settings** (gear icon) → **API**.
+1. In Supabase go to **Project Settings** (gear icon) → **API keys** (or click the **Connect** button at the top).
 2. Copy two values:
-   - **Project URL** (looks like `https://abcdxyz.supabase.co`)
-   - **Project API key → `anon` `public`** (a long string). **Use the `anon` key, never the `service_role` key.**
+   - **Project URL** (looks like `https://abcdxyz.supabase.co`) — under *Project Settings → API* / *Data API*.
+   - **Publishable key** — starts with **`sb_publishable_…`**. This is the safe-to-share key.
+     *(On an older project you may instead see an "anon public" key — that one works too. **Never** use a key labelled `secret` / `sb_secret_…` or `service_role`.)*
 3. Open **`js/cms-config.js`** in your website folder and paste them in:
    ```js
    window.OW_CMS = {
-     SUPABASE_URL:      'https://abcdxyz.supabase.co',
-     SUPABASE_ANON_KEY: 'paste-the-anon-public-key-here'
+     SUPABASE_URL: 'https://abcdxyz.supabase.co',
+     SUPABASE_KEY: 'sb_publishable_xxxxxxxxxxxxxxxxxx'
    };
    ```
 4. **Save**, then **deploy** your site (push to Git / redeploy on Vercel).

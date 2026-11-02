@@ -7,8 +7,9 @@
 
   // ---------- config guard ----------
   var cfg = window.OW_CMS || {};
+  var cmsKey = cfg.SUPABASE_KEY || cfg.SUPABASE_ANON_KEY; // support either name
   var configured = cfg.SUPABASE_URL && cfg.SUPABASE_URL.indexOf('YOUR-PROJECT') === -1 &&
-                   cfg.SUPABASE_ANON_KEY && cfg.SUPABASE_ANON_KEY.indexOf('YOUR-') === -1;
+                   cmsKey && cmsKey.indexOf('YOUR-') === -1;
 
   var $ = function (id) { return document.getElementById(id); };
   var loginErr = $('loginErr');
@@ -23,7 +24,7 @@
     return;
   }
 
-  var sb = supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+  var sb = supabase.createClient(cfg.SUPABASE_URL, cmsKey);
 
   // ---------- collection definitions ----------
   var COLLECTIONS = {
