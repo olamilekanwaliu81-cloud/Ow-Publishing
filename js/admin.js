@@ -24,7 +24,9 @@
     return;
   }
 
-  var sb = supabase.createClient(cfg.SUPABASE_URL, cmsKey);
+  var sb = supabase.createClient(cfg.SUPABASE_URL, cmsKey, {
+    auth: { flowType: 'implicit', detectSessionInUrl: true, persistSession: true, autoRefreshToken: true }
+  });
 
   // ---------- collection definitions ----------
   var COLLECTIONS = {
@@ -105,6 +107,8 @@
 
   // ---------- auth ----------
   async function init() {
+    // fires on magic-link return (SIGNED_IN) and on normal load
+    sb.auth.onAuthStateChange(function (_event, session) { if (session) showDash(session); });
     var sess = (await sb.auth.getSession()).data.session;
     if (sess) showDash(sess); else showLogin();
   }
@@ -126,6 +130,22 @@
   var showPw = $('showPw');
   if (showPw) showPw.addEventListener('change', function () {
     var p = $('password'); if (p) p.type = showPw.checked ? 'text' : 'password';
+  });
+
+  // ---- passwordless: email me a sign-in link ----
+  var magicBtn = $('magicBtn');
+  if (magicBtn) magicBtn.addEventListener('click', async function () {
+    var email = $('email').value.trim(), msg = $('magicMsg');
+    if (!email) { msg.style.color = '#b23b3b'; msg.textContent = 'Type your email above first.'; return; }
+    magicBtn.classList.add('adm-busy'); msg.style.color = 'var(--ink-soft)'; msg.textContent = 'Sending your link…';
+    var r = await sb.auth.signInWithOtp({
+      email: email,
+      options: { shouldCreateUser: false, emailRedirectTo: location.origin + '/admin' }
+    });
+    magicBtn.classList.remove('adm-busy');
+    if (r.error) { msg.style.color = '#b23b3b'; msg.textContent = r.error.message; return; }
+    msg.style.color = 'var(--gold-deep)';
+    msg.textContent = 'Check your email for a sign-in link (look in spam too). It expires in 1 hour — open it on this device.';
   });
 
   $('logoutBtn').addEventListener('click', async function () { await sb.auth.signOut(); showLogin(); });

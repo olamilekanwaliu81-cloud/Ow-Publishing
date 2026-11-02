@@ -34,6 +34,12 @@
       </div>
       <button type="submit" class="btn btn-gold btn-lg" id="loginBtn" style="width:100%;justify-content:center">Sign in</button>
       <div class="adm-err" id="loginErr"></div>
+
+      <div style="display:flex;align-items:center;gap:10px;color:var(--ink-soft);font-size:.78rem;margin:18px 0 12px">
+        <span style="flex:1;height:1px;background:var(--line)"></span>no password?<span style="flex:1;height:1px;background:var(--line)"></span>
+      </div>
+      <button type="button" class="btn btn-ghost" id="magicBtn" style="width:100%;justify-content:center">Email me a sign-in link</button>
+      <div class="adm-err" id="magicMsg" style="color:var(--ink-soft)"></div>
     </form>
   </div>
 
@@ -86,6 +92,6 @@
 
   <script src="js/supabase.js?v=1"></script>
   <script src="js/cms-config.js?v=1"></script>
-  <script src="js/admin.js?v=2"></script>
+  <script src="js/admin.js?v=3"></script>
 </body>
 </html>
