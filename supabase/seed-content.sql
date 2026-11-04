@@ -46,4 +46,37 @@ begin
   end if;
 end $$;
 
+-- ---------- Blog posts (6 existing articles) ----------
+-- These articles already live on their own pages, so each row links to that
+-- page (link) instead of storing the body. They become editable/deletable in
+-- the dashboard; the blog shows the CMS copy and never duplicates them.
+alter table public.posts add column if not exists link     text;
+alter table public.posts add column if not exists featured boolean default false;
+alter table public.posts add column if not exists thumb    text;
+
+do $$
+begin
+  if (select count(*) from public.posts) = 0 then
+    insert into public.posts (title, slug, category, excerpt, link, thumb, featured, published, published_date, sort_order) values
+      ('Self-publishing vs traditional publishing: the two roads', 'two-roads', 'Publishing paths',
+        'Every author faces one fork: do it yourself and keep more per book, or let a publisher take the risk and keep less. Here is how each road really works, and the one golden rule that separates a real publisher from a scam.',
+        'article-two-roads', 'th-navy', true, true, '2026-07-20', 1),
+      ('What a literary agent really does, and how they get paid', 'literary-agents', 'Agents',
+        'An agent only earns when you earn, 15% of what you make, and nothing upfront, ever. Here is what they actually do, and why "pay to be represented" is the industry’s biggest red flag.',
+        'article-literary-agents', 'th-gold', false, true, '2026-06-05', 2),
+      ('A real publisher never asks you for money', 'never-pay-to-publish', 'Avoiding scams',
+        'Vanity presses dressed up as "hybrid publishers" target writers who feel unworthy. Learn the bait-and-switch, the pre-sign checklist, and the one direction money should always flow.',
+        'article-never-pay-to-publish', 'th-plum', false, true, '2026-04-28', 3),
+      ('What’s really inside a traditional publishing house', 'inside-a-publisher', 'Publishing paths',
+        'A publisher isn’t one person, it’s a whole team, each with a specific job, all salaried. Here is who does what, and why that means you never pay them a fee to be published.',
+        'article-inside-a-publisher', 'th-teal', false, true, '2026-03-15', 4),
+      ('Perfectionism is just fear in a nice outfit', 'finish-your-book', 'Writing & finishing',
+        'Most books die in the drafting, not the market. The label "aspiring", perfectionism, and waiting for motivation are the real killers. Here is the honest way to actually finish.',
+        'article-finish-your-book', 'th-rust', false, true, '2026-01-30', 5),
+      ('Standing out as an author in the AI era', 'ai-era', 'Writing & AI',
+        'AI-generated books are flooding submission piles and store shelves. Here is how to use AI for the mechanical work while doubling down on the one thing it can’t fake, your voice.',
+        'article-ai-era', 'th-navy', false, true, '2025-11-18', 6);
+  end if;
+end $$;
+
 -- Done. Refresh your dashboard to see all your content.

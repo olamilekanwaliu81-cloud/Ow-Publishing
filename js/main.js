@@ -83,17 +83,17 @@
   // Live posts link to a real article page; url:null renders a "Coming soon" card.
   const AUTHOR = 'Olamilekan Waliu';
   const POSTS = [
-    { t: 'Self-publishing vs traditional publishing: the two roads', cat: 'Publishing paths', thumb: 'th-navy', date: 'Jul 20, 2026', url: 'article-two-roads.html', featured: true,
+    { t: 'Self-publishing vs traditional publishing: the two roads', slug: 'two-roads', cat: 'Publishing paths', thumb: 'th-navy', date: 'Jul 20, 2026', url: 'article-two-roads.html', featured: true,
       e: 'Every author faces one fork: do it yourself and keep more per book, or let a publisher take the risk and keep less. Here is how each road really works, and the one golden rule that separates a real publisher from a scam.' },
-    { t: 'What a literary agent really does, and how they get paid', cat: 'Agents', thumb: 'th-gold', date: 'Jun 5, 2026', url: 'article-literary-agents.html',
+    { t: 'What a literary agent really does, and how they get paid', slug: 'literary-agents', cat: 'Agents', thumb: 'th-gold', date: 'Jun 5, 2026', url: 'article-literary-agents.html',
       e: 'An agent only earns when you earn, 15% of what you make, and nothing upfront, ever. Here is what they actually do, and why "pay to be represented" is the industry’s biggest red flag.' },
-    { t: 'A real publisher never asks you for money', cat: 'Avoiding scams', thumb: 'th-plum', date: 'Apr 28, 2026', url: 'article-never-pay-to-publish.html',
+    { t: 'A real publisher never asks you for money', slug: 'never-pay-to-publish', cat: 'Avoiding scams', thumb: 'th-plum', date: 'Apr 28, 2026', url: 'article-never-pay-to-publish.html',
       e: 'Vanity presses dressed up as "hybrid publishers" target writers who feel unworthy. Learn the bait-and-switch, the pre-sign checklist, and the one direction money should always flow.' },
-    { t: 'What’s really inside a traditional publishing house', cat: 'Publishing paths', thumb: 'th-teal', date: 'Mar 15, 2026', url: 'article-inside-a-publisher.html',
+    { t: 'What’s really inside a traditional publishing house', slug: 'inside-a-publisher', cat: 'Publishing paths', thumb: 'th-teal', date: 'Mar 15, 2026', url: 'article-inside-a-publisher.html',
       e: 'A publisher isn’t one person, it’s a whole team, each with a specific job, all salaried. Here is who does what, and why that means you never pay them a fee to be published.' },
-    { t: 'Perfectionism is just fear in a nice outfit', cat: 'Writing & finishing', thumb: 'th-rust', date: 'Jan 30, 2026', url: 'article-finish-your-book.html',
+    { t: 'Perfectionism is just fear in a nice outfit', slug: 'finish-your-book', cat: 'Writing & finishing', thumb: 'th-rust', date: 'Jan 30, 2026', url: 'article-finish-your-book.html',
       e: 'Most books die in the drafting, not the market. The label "aspiring", perfectionism, and waiting for motivation are the real killers. Here is the honest way to actually finish.' },
-    { t: 'Standing out as an author in the AI era', cat: 'Writing & AI', thumb: 'th-navy', date: 'Nov 18, 2025', url: 'article-ai-era.html',
+    { t: 'Standing out as an author in the AI era', slug: 'ai-era', cat: 'Writing & AI', thumb: 'th-navy', date: 'Nov 18, 2025', url: 'article-ai-era.html',
       e: 'AI-generated books are flooding submission piles and store shelves. Here is how to use AI for the mechanical work while doubling down on the one thing it can’t fake, your voice.' },
 
     // Queued from the owner’s guides, write next.
@@ -198,7 +198,19 @@
           var d = p.published_date ? new Date(p.published_date) : null;
           var date = (d && !isNaN(d)) ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
           var cat = p.category || 'Insights';
-          POSTS.unshift({ t: p.title, cat: cat, thumb: thumbs[i % thumbs.length], date: date, url: 'post.html?id=' + encodeURIComponent(p.id), e: p.excerpt || '' });
+          // A post with its own page (link) opens that page; otherwise the CMS reader.
+          var url = p.link ? p.link : ('post.html?id=' + encodeURIComponent(p.id));
+          var obj = {
+            t: p.title, slug: p.slug || '', cat: cat,
+            thumb: p.thumb || thumbs[i % thumbs.length],
+            date: date, url: url, e: p.excerpt || '', featured: !!p.featured
+          };
+          // If this post matches a built-in fallback (same slug), replace it in
+          // place so the list shows the CMS copy without duplicating it. New
+          // posts (no matching slug) go to the front.
+          var idx = -1;
+          if (p.slug) { for (var j = 0; j < POSTS.length; j++) { if (POSTS[j].slug === p.slug) { idx = j; break; } } }
+          if (idx > -1) POSTS.splice(idx, 1, obj); else POSTS.unshift(obj);
           if (cats.indexOf(cat) === -1) cats.push(cat);
         });
         page = 1; render();

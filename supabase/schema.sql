@@ -42,6 +42,9 @@ create table if not exists public.posts (
   body           text,
   cover_url      text,
   category       text,
+  link           text,                        -- if set, blog links to this page instead of rendering body
+  thumb          text,                        -- optional card colour: th-navy|th-gold|th-plum|th-teal|th-rust
+  featured       boolean default false,       -- show as the "Start here" featured post
   published      boolean default true,
   published_date date default current_date,
   sort_order     int default 0
