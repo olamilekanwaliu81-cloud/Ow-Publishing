@@ -50,9 +50,14 @@ end $$;
 -- These articles already live on their own pages, so each row links to that
 -- page (link) instead of storing the body. They become editable/deletable in
 -- the dashboard; the blog shows the CMS copy and never duplicates them.
-alter table public.posts add column if not exists link     text;
-alter table public.posts add column if not exists featured boolean default false;
-alter table public.posts add column if not exists thumb    text;
+alter table public.posts add column if not exists category       text;
+alter table public.posts add column if not exists link           text;
+alter table public.posts add column if not exists thumb          text;
+alter table public.posts add column if not exists featured       boolean default false;
+alter table public.posts add column if not exists cover_url      text;
+alter table public.posts add column if not exists published      boolean default true;
+alter table public.posts add column if not exists published_date date default current_date;
+alter table public.posts add column if not exists sort_order     int default 0;
 
 do $$
 begin
